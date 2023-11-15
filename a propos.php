@@ -34,7 +34,7 @@
 <div class="container-fluid bg-dark px-0">
     <div class="row gx-0">
         <div class="col-lg-3 bg-dark d-none d-lg-block">
-            <a href="acceuil.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+            <a href="acceuil.php" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                 <img src="oumayma.png" style="max-width: 80px; max-height: 80px;" >
             </a>
         </div>
@@ -71,7 +71,7 @@
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                <a href="acceuil.html" class="navbar-brand d-block d-lg-none">
+                <a href="acceuil.php" class="navbar-brand d-block d-lg-none">
                     
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -79,19 +79,19 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="acceuil.html" class="nav-item nav-link active">acceuil</a>
-                        <a href="a propos.html" class="nav-item nav-link">a propos</a>
-                        <a href="menu.html" class="nav-item nav-link">menu</a>
-                        <a href="compte.html" class="nav-item nav-link">compte</a>
-                        <a href="contact.html" class="nav-item nav-link">contact</a>
+                        <a href="acceuil.php" class="nav-item nav-link active">acceuil</a>
+                        <a href="a propos.php" class="nav-item nav-link">a propos</a>
+                        <a href="compte.php" class="nav-item nav-link">compte</a>
+                        <a href="contact.php" class="nav-item nav-link">contact</a>
+                        <a href="login.php" class="nav-item nav-link">login</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="logo.html" class="dropdown-item active">services logo</a>
-                                <a href="flayer.html" class="dropdown-item">service flyers</a>
-                                <a href="cv.html" class="dropdown-item">service carte visite</a>
-                                <a href="affiche.html" class="dropdown-item">service des affiches</a>
-                                <a href="pub.html" class="dropdown-item">service publicités</a>
+                                <a href="logo.php" class="dropdown-item active">services logo</a>
+                                <a href="flayer.php" class="dropdown-item">service flyers</a>
+                                <a href="cv.php" class="dropdown-item">service carte visite</a>
+                                <a href="affiche.php" class="dropdown-item">service des affiches</a>
+                                <a href="pub.php" class="dropdown-item">service publicités</a>
                             </div>
                         </div>
                         

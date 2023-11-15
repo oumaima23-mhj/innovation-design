@@ -71,33 +71,34 @@
                     </div>
                 </div>
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                    <a href="acceuil.html" class="navbar-brand d-block d-lg-none">
-                        <h1 class="m-0 display-4 text-primary text-uppercase">innovation design</h1>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="acceuil.html" class="nav-item nav-link active">acceuil</a>
-                            <a href="a propos.html" class="nav-item nav-link">a propos</a>
-                            <a href="menu.html" class="nav-item nav-link">menu</a>
-                            <a href="compte.html" class="nav-item nav-link">compte</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="logo.html" class="dropdown-item active">services logo</a>
-                                    <a href="flayer.html" class="dropdown-item">service flyers</a>
-                                    <a href="cv.html" class="dropdown-item">service carte visite</a>
-                                    <a href="affiche.html" class="dropdown-item">service des affiches</a>
-                                    <a href="pub.html" class="dropdown-item">service publicités</a>
-                                </div>
+                <a href="acceuil.php" class="navbar-brand d-block d-lg-none">
+                    
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="acceuil.php" class="nav-item nav-link active">acceuil</a>
+                        <a href="a propos.php" class="nav-item nav-link">a propos</a>
+                        <a href="compte.php" class="nav-item nav-link">compte</a>
+                        <a href="contact.php" class="nav-item nav-link">contact</a>
+                        <a href="login.php" class="nav-item nav-link">login</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="logo.php" class="dropdown-item active">services logo</a>
+                                <a href="flayer.php" class="dropdown-item">service flyers</a>
+                                <a href="cv.php" class="dropdown-item">service carte visite</a>
+                                <a href="affiche.php" class="dropdown-item">service des affiches</a>
+                                <a href="pub.php" class="dropdown-item">service publicités</a>
                             </div>
-                           
                         </div>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonné-vous</a>
+                        
                     </div>
-                </nav>
+                    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
+                </div>
+            </nav>
             </div>
         </div>
     </div>

@@ -1,5 +1,33 @@
 <html>
 <head>
+<?php
+// Connexion à la base de données (à remplacer par tes informations de connexion)
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "innovation_design";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $numero_telephone = $_POST['numero_telephone'];
+    $email = $_POST['email'];
+    $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT)//mdp securise et hachee
+    $sql = "INSERT INTO utilisateurs (nom, prenom, numero_telephone, email, mot_de_passe)
+            VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $nom, $prenom, $numero_telephone, $email, $mot_de_passe);
+    $stmt->execute();
+    $stmt->close();
+    header("Location: inscription_reussie.php");
+    die();
+}
+$conn->close();
+?>
     <style>
     /*
     default element
@@ -213,34 +241,34 @@ a{
                     </div>
                 </div>
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                    <a href="acceuil.html" class="navbar-brand d-block d-lg-none">
-                        <h1 class="m-0 display-4 text-primary text-uppercase">innovation design</h1>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="acceuil.html" class="nav-item nav-link active">acceuil</a>
-                            <a href="a propos.html" class="nav-item nav-link">a propos</a>
-                            <a href="menu.html" class="nav-item nav-link">menu</a>
-                            <a href="compte.html" class="nav-item nav-link">compte</a>
-                            <a href="contact.html" class="nav-item nav-link">contact</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="logo.html" class="dropdown-item active">services logo</a>
-                                    <a href="flayer.html" class="dropdown-item">service flyers</a>
-                                    <a href="cv.html" class="dropdown-item">service carte visite</a>
-                                    <a href="affiche.html" class="dropdown-item">service des affiches</a>
-                                    <a href="pub.html" class="dropdown-item">service publicités</a>
-                                </div>
+                <a href="acceuil.php" class="navbar-brand d-block d-lg-none">
+                    
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="acceuil.php" class="nav-item nav-link active">acceuil</a>
+                        <a href="a propos.php" class="nav-item nav-link">a propos</a>
+                        <a href="compte.php" class="nav-item nav-link">compte</a>
+                        <a href="contact.php" class="nav-item nav-link">contact</a>
+                        <a href="login.php" class="nav-item nav-link">login</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="logo.php" class="dropdown-item active">services logo</a>
+                                <a href="flayer.php" class="dropdown-item">service flyers</a>
+                                <a href="cv.php" class="dropdown-item">service carte visite</a>
+                                <a href="affiche.php" class="dropdown-item">service des affiches</a>
+                                <a href="pub.php" class="dropdown-item">service publicités</a>
                             </div>
-                           
                         </div>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonné-vous</a>
+                        
                     </div>
-                </nav>
+                    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
+                </div>
+            </nav>
             </div>
         </div>
     </div>
@@ -249,12 +277,14 @@ a{
     <div id="connexion">
       <h1 class="title">BIENVENU </h1>
       <p class="paragraphe">
-        Veuillez entrer vos détails personnel et démarrez votre journée sur ino design
+        Veuillez entrer vos details personnel et demarrez votre journee sur ino design
       </p>
-      <a href="#" class="btn-link connexion">Se connecter</a>
+      <form method="post" action="login.php">
+                <button type="submit" name="connexion_submit" class="btn-link connexion">Se connecter</button>
+            </form>
     </div>
     <div id="inscription">
-      <h1 class="title">Créer un compte</h1>
+      <h1 class="title">Creer un compte</h1>
       <p class="paragraphe">
         Veuillez remplir tous les champs
       </p>
@@ -264,7 +294,15 @@ a{
           <div class="icon-user"></div>
         </div>
         <div class="group-form">
-          <input type="email" placeholder="mail">
+          <input type="text" placeholder="prenom">
+          <div class="icon-user"></div>
+        </div>
+        <div class="group-form">
+          <input type="text" placeholder="numero téléphone">
+          <div class="icon-user"></div>
+        </div>
+        <div class="group-form">
+          <input type="email" placeholder="e-mail">
           <div class="icon-mail"></div>
         </div>
         <div class="group-form">

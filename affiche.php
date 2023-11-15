@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,6 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="google.css" rel="stylesheet"> 
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -71,34 +72,34 @@
                     </div>
                 </div>
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                    <a href="acceuil.html" class="navbar-brand d-block d-lg-none">
-                        <h1 class="m-0 display-4 text-primary text-uppercase">innovation design</h1>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="acceuil.html" class="nav-item nav-link active">acceuil</a>
-                            <a href="a propos.html" class="nav-item nav-link">a propos</a>
-                            <a href="menu.html" class="nav-item nav-link">menu</a>
-                            <a href="compte.html" class="nav-item nav-link">compte</a>
-                            <a href="contact.html" class="nav-item nav-link">contact</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="logo.html" class="dropdown-item active">services logo</a>
-                                    <a href="flayer.html" class="dropdown-item">service flyers</a>
-                                    <a href="cv.html" class="dropdown-item">service carte visite</a>
-                                    <a href="affiche.html" class="dropdown-item">service des affiches</a>
-                                    <a href="pub.html" class="dropdown-item">service publicités</a>
-                                </div>
+                <a href="acceuil.php" class="navbar-brand d-block d-lg-none">
+                    
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="acceuil.php" class="nav-item nav-link active">acceuil</a>
+                        <a href="a propos.php" class="nav-item nav-link">a propos</a>
+                        <a href="compte.php" class="nav-item nav-link">compte</a>
+                        <a href="contact.php" class="nav-item nav-link">contact</a>
+                        <a href="login.php" class="nav-item nav-link">login</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="logo.php" class="dropdown-item active">services logo</a>
+                                <a href="flayer.php" class="dropdown-item">service flyers</a>
+                                <a href="cv.php" class="dropdown-item">service carte visite</a>
+                                <a href="affiche.php" class="dropdown-item">service des affiches</a>
+                                <a href="pub.php" class="dropdown-item">service publicités</a>
                             </div>
-                           
                         </div>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonné-vous</a>
+                        
                     </div>
-                </nav>
+                    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
+                </div>
+            </nav>
             </div>
         </div>
     </div>
@@ -109,8 +110,9 @@
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
-            <h1 class="display-2 text-uppercase text-white mb-md-4">menu</h1> 
-            </div>  
+                <h1 class="display-2 text-uppercase text-white mb-md-4">notre affiche</h1>
+                
+            </div>
         </div>
     </div>
     <!-- Hero End -->
@@ -125,7 +127,7 @@
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="affiche/l5.webp" alt="">
+                                <img class="img-fluid" src="affiche/f1.webp" alt="">
                             </div>
                           
                         </div>
@@ -133,7 +135,7 @@
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="cv/cv2.jpg" alt="" height="1500px" width="1600px">
+                                <img class="img-fluid" src="affiche/f2.jpg" alt="">
                             </div>
                            
                         </div>
@@ -141,7 +143,7 @@
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="logo/l65.png" alt="" height="1500px" width="1600px">
+                                <img class="img-fluid" src="affiche/f5.jpeg" alt="">
                             </div>
                             
                         </div>
@@ -149,7 +151,7 @@
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="cv/cv56.png" alt="" height="1500px" width="1600px">
+                                <img class="img-fluid" src="affiche/f6.jpg" alt="">
                             </div>
                            
                         </div>
@@ -157,7 +159,7 @@
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="flayers/f3.webp" alt="" height="1500px" width="1600px">
+                                <img class="img-fluid" src="affiche/h4.webp" alt="">
                             </div>
                            
                         </div>
@@ -165,7 +167,7 @@
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="affiche/f2.jpg" alt="" height="1500px" width="1600px">
+                                <img class="img-fluid" src="affiche/j5.jpg" alt="">
                             </div>
                            
                         </div>
@@ -173,7 +175,7 @@
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="cv/cv3.jpg" alt="" height="1500px" width="1600px">
+                                <img class="img-fluid" src="affiche/kl5.jpg" alt="">
                             </div>
                             
                         </div>
@@ -181,27 +183,20 @@
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="logo/l3.png" alt="" height="1500px" width="1600px">
+                                <img class="img-fluid" src="affiche/ml5.webp" alt="">
                             </div>
                           
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="pub/p5.jpg" alt="" height="1500px" width="1600px">
-                            </div>
-                           
-                        </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="blog-item">
+                    <div class="position-relative overflow-hidden rounded-top">
+                        <img class="img-fluid" src="affiche/l5.webp" alt="">
                     </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="pub/p65.webp" alt="" height="1500px" width="1600px">
-                            </div>
-                           
-                        </div>
-                    </div>
+                  
                     <div class="col-12">
                         <nav aria-label="Page navigation">
                           <ul class="pagination pagination-lg justify-content-center m-0">
@@ -248,8 +243,20 @@
                 <!-- Category End -->
 
                
-               
-            
+                <!-- Tags Start -->
+                <div class="mb-5">
+                    <h3 class="text-uppercase mb-4">Tag Cloud</h3>
+                    <div class="d-flex flex-wrap m-n1">
+                        <a href="" class="btn btn-dark m-1">Design</a>
+                        <a href="" class="btn btn-dark m-1">Development</a>
+                        <a href="" class="btn btn-dark m-1">Marketing</a>
+                        <a href="" class="btn btn-dark m-1">Writing</a>
+                        <a href="" class="btn btn-dark m-1">Consulting</a>
+                    </div>
+                </div>
+                <!-- Tags End -->
+            </div>
+            <!-- Sidebar End -->
         </div>
     </div>
     <!-- Blog End -->
@@ -288,6 +295,7 @@
                             <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contactez-nous</a>
                         </div>
                     </div>
+                  
                   
                 </div>
             </div>
