@@ -1,46 +1,107 @@
 <?php
-    if ($_POST){
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "innovation_design";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("La connexion a échoué : " . $conn->connect_error);
-        }
-        $sql = "SELECT * FROM `user` where `nom`='" . $_POST['nom'] . "' and `prenom`='" . $_POST['prenom'] . "';";
-        $result = $conn->query($sql);   
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {}
+if ($_POST) {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "innovation_design";
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("La connexion a échoué : " . $conn->connect_error);
+    }
+    $sql = "SELECT * FROM `user` where `nom`='" . $_POST['nom'] . "' and `prenom`='" . $_POST['prenom'] . "';";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
 ?>
-<div class="d-flex mb-4">
-    <img src="<?php echo $row['image']; ?>" class="img-fluid rounded" style="width: 45px; height: 45px;">
-    <div class="ps-3">
-        <h6><a href=""><?php echo $row['auteur']; ?></a> <small><i><?php echo $row['date_commentaire']; ?></i></small></h6>
-        <p><?php echo $row['contenu']; ?></p>
-        <button class="btn btn-sm btn-secondary">repondre</button>
-    </div>
-    <form method="post" action="traitement_reponse.php">
-    <input type="hidden" name="comment_id" value="<?php echo $row['id_commentaire']; ?>">
-    <textarea name="reply_content" placeholder="Votre réponse"></textarea>
-    <button type="submit" class="btn btn-sm btn-secondary">Répondre</button>
-</form>
+            <div class="d-flex mb-4">
+                <img src="<?php echo $row['image']; ?>" class="img-fluid rounded" style="width: 45px; height: 45px;">
+                <div class="ps-3">
+                    <h6><a href=""><?php echo $row['auteur']; ?></a> <small><i><?php echo $row['date_commentaire']; ?></i></small></h6>
+                    <p><?php echo $row['contenu']; ?></p>
+                    <button class="btn btn-sm btn-secondary">repondre</button>
+                </div>
+            </div>
+            <form method="post" action="traitement_reponse.php">
+                <input type="hidden" name="comment_id" value="<?php echo $row['id_commentaire']; ?>">
+                <textarea name="reply_content" placeholder="Votre réponse"></textarea>
+                <button type="submit" class="btn btn-sm btn-secondary">Répondre</button>
+            </form>
+<?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $commentId = $_POST['comment_id'];
+                $replyContent = $_POST['reply_content'];
+                // Ajoutez votre logique de traitement de la réponse ici
+
+                // Redirigez après le traitement
+                header("Location: " . $_SERVER["HTTP_REFERER"]);
+                exit();
+            }
+        }
+    } else {
+        echo "Aucun commentaire trouvé.";
+    }
+    $conn->close();
+}
+?>
+<!DOCTYPE html>
+<!-- Le reste de votre code HTML reste inchangé après cette section -->
+Cette version supprime la fermeture prématurée des balises PHP pour permettre l'intégration correcte du code HTML dans la boucle while. Cependant, assurez-vous de sécuriser vos requêtes SQL contre les injections en utilisant des requêtes préparées lorsque vous travaillez avec des données d'utilisateur.
+
+
+
+
+User
+corrige
+ChatGPT
+Bien sûr, voici le code corrigé en séparant correctement les sections PHP et HTML, et en ajoutant des commentaires pour plus de clarté :
+
+php
+Copy code
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $commentId = $_POST['comment_id'];
-    $replyContent = $_POST['reply_content'];
-    header("Location: " . $_SERVER["HTTP_REFERER"]);
-    exit();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "innovation_design";
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("La connexion a échoué : " . $conn->connect_error);
+    }
+
+    // Utilisez des requêtes préparées pour éviter les injections SQL
+    $sql = "SELECT * FROM `user` where `nom`=? and `prenom`=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $_POST['nom'], $_POST['prenom']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // Affichage des commentaires et des formulaires de réponse
+?>
+            <div class="d-flex mb-4">
+                <img src="<?php echo $row['image']; ?>" class="img-fluid rounded" style="width: 45px; height: 45px;">
+                <div class="ps-3">
+                    <h6><a href=""><?php echo $row['auteur']; ?></a> <small><i><?php echo $row['date_commentaire']; ?></i></small></h6>
+                    <p><?php echo $row['contenu']; ?></p>
+                    <button class="btn btn-sm btn-secondary">repondre</button>
+                </div>
+            </div>
+            <form method="post" action="traitement_reponse.php">
+                <input type="hidden" name="comment_id" value="<?php echo $row['id_commentaire']; ?>">
+                <textarea name="reply_content" placeholder="Votre réponse"></textarea>
+                <button type="submit" class="btn btn-sm btn-secondary">Répondre</button>
+            </form>
+<?php
+        }
+    } else {
+        echo "Aucun commentaire trouvé.";
+    }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>
-</div>
-<?php
-} else {
-echo "Aucun commentaire trouvé.";
-}
-$conn->close();
-}
-        ?> 
 <!DOCTYPE html>
 <html lang="en">
 
