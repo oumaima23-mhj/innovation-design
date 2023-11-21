@@ -1,3 +1,46 @@
+<?php
+    if ($_POST){
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "innovation_design";
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("La connexion a échoué : " . $conn->connect_error);
+        }
+        $sql = "SELECT * FROM `user` where `nom`='" . $_POST['nom'] . "' and `prenom`='" . $_POST['prenom'] . "';";
+        $result = $conn->query($sql);   
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {}
+?>
+<div class="d-flex mb-4">
+    <img src="<?php echo $row['image']; ?>" class="img-fluid rounded" style="width: 45px; height: 45px;">
+    <div class="ps-3">
+        <h6><a href=""><?php echo $row['auteur']; ?></a> <small><i><?php echo $row['date_commentaire']; ?></i></small></h6>
+        <p><?php echo $row['contenu']; ?></p>
+        <button class="btn btn-sm btn-secondary">repondre</button>
+    </div>
+    <form method="post" action="traitement_reponse.php">
+    <input type="hidden" name="comment_id" value="<?php echo $row['id_commentaire']; ?>">
+    <textarea name="reply_content" placeholder="Votre réponse"></textarea>
+    <button type="submit" class="btn btn-sm btn-secondary">Répondre</button>
+</form>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $commentId = $_POST['comment_id'];
+    $replyContent = $_POST['reply_content'];
+    header("Location: " . $_SERVER["HTTP_REFERER"]);
+    exit();
+}
+?>
+</div>
+<?php
+} else {
+echo "Aucun commentaire trouvé.";
+}
+$conn->close();
+}
+        ?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +55,7 @@
     <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="google.css" rel="stylesheet"> 
     <!-- Icon Font Stylesheet -->
@@ -139,7 +183,7 @@
                         <div class="ps-3">
                             <h6><a href="">aminemahj</a> <small><i>28 Jan 2023</i></small></h6>
                             <p>Notre entreprise a fait appel aux services de cette société de design graphique pour créer notre logo et nous sommes absolument ravis du résultat! Les designers ont compris notre vision et ont su créer un logo qui reflète parfaitement notre image de marque. Le processus de création a été fluide et professionnel, et nous avons apprécié leur engagement à nous écouter et à répondre à nos besoins.</p>
-                            <button class="btn btn-sm btn-secondary">Reply</button>
+                            <button class="btn btn-sm btn-secondary">Repondre</button>
                         </div>
                     </div>
                     <div class="d-flex mb-4">
@@ -147,7 +191,7 @@
                         <div class="ps-3">
                             <h6><a href="">moezbhk</a> <small><i>01 Jan 2022</i></small></h6>
                             <p>Nous avons fait appel à cette société de design pour créer des flyers pour notre événement et nous avons été impressionnés par leur créativité et leur professionnalisme. Les designs étaient modernes et attrayants, et ont contribué à attirer un grand nombre de participants à notre événement. Nous recommandons fortement cette entreprise pour tous vos besoins de design graphique.</p>
-                            <button class="btn btn-sm btn-secondary">Reply</button>
+                            <button class="btn btn-sm btn-secondary">Repondre</button>
                         </div>
                     </div>
                     <div class="d-flex ms-5 mb-4">
@@ -155,7 +199,7 @@
                         <div class="ps-3">
                             <h6><a href="">alberto shneider</a> <small><i>01 fev 2021</i></small></h6>
                             <p>J'ai fait appel à cette société pour créer ma carte de visite professionnelle et j'ai été très satisfait du résultat final. Les designers ont été très attentifs à mes besoins et ont créé un design qui reflète parfaitement mon image de marque. Le processus de création a été rapide et efficace, et j'ai été impressionné par leur engagement à garantir ma satisfaction.</p>
-                            <button class="btn btn-sm btn-secondary">Reply</button>
+                            <button class="btn btn-sm btn-secondary">Repondre</button>
                         </div>
                     </div>
                 </div>
@@ -234,6 +278,14 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.btn-secondary').on('click', function() {
+            var commentId = $(this).closest('form').find('input[name="comment_id"]').val();
+        });
+    });
+</script>
 </body>
 
 </html>

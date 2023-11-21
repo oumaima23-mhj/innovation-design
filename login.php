@@ -16,7 +16,7 @@ if ($_POST){
     die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM `user` where `e-mail`='" . $_POST['e-mail'] . "' and `password`='" . $_POST['pass'] . "';";
+    $sql = "SELECT * FROM `user` where `e_mail`='" . $_POST['e-mail'] . "' and `password`='" . $_POST['pass'] . "';";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -172,31 +172,30 @@ form br {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto py-0">
-                        <a href="acceuil.php" class="nav-item nav-link active">acceuil</a>
-                        <a href="a propos.php" class="nav-item nav-link">apropos</a>
-                        <a href="compte.php" class="nav-item nav-link">compte</a>
-                        <a href="contact.php" class="nav-item nav-link">contact</a>
-                        <?php if(isset($_SESSION['id']) && $_SESSION['id']) : ?>
-                <a href="logout.php" class="nav-item nav-link">logout</a>
-            <?php else : ?>
-                <a href="login.php" class="nav-item nav-link">login</a>
-            <?php endif; ?>
+    <div class="navbar-nav mr-auto py-0">
+        <a href="acceuil.php" class="nav-item nav-link active">acceuil</a>
+        <a href="a propos.php" class="nav-item nav-link">apropos</a>
+        <a href="compte.php" class="nav-item nav-link">compte</a>
+        <a href="contact.php" class="nav-item nav-link">contact</a>
+        <?php if(isset($_SESSION['id']) and $_SESSION['id']) { ?>
+            <a href="login.php" class="nav-item nav-link">login</a>
+        <?php } else { ?>
+            <a href="logout.php" class="nav-item nav-link">logout</a>
+        <?php } ?>
 
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="logo.php" class="dropdown-item active">services logo</a>
-                                <a href="flayer.php" class="dropdown-item">service flyers</a>
-                                <a href="cv.php" class="dropdown-item">service carte visite</a>
-                                <a href="affiche.php" class="dropdown-item">service des affiches</a>
-                                <a href="pub.php" class="dropdown-item">service publicités</a>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
-                </div>
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
+            <div class="dropdown-menu rounded-0 m-0">
+                <a href="logo.php" class="dropdown-item active">services logo</a>
+                <a href="flayer.php" class="dropdown-item">service flyers</a>
+                <a href="cv.php" class="dropdown-item">service carte visite</a>
+                <a href="affiche.php" class="dropdown-item">service des affiches</a>
+                <a href="pub.php" class="dropdown-item">service publicités</a>
+            </div>
+        </div>
+    </div>
+    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
+</div>
             </nav>
     
             </div>

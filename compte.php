@@ -1,33 +1,35 @@
+<?php
+    if ($_POST){
+        // Connexion à la base de données (à remplacer par tes informations de connexion)
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "innovation_design";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $numero_telephone = $_POST['numero_telephone'];
+        $email = $_POST['email'];
+        $mot_de_passe = $_POST['mot_de_passe'];
+
+        $sql = "INSERT INTO `user`(`nom`, `prenom`, `e_mail`, `password`, `numero_telephone`) VALUES ('" . $nom . "','" . $prenom . "','" . $email . "','" . $mot_de_passe . "','" . $numero_telephone . "')";
+        
+        if ($conn->query($sql) === TRUE) {
+            header("Location: /login.php");
+            die(); 
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+        $conn->close();
+    }
+?>
 <html>
 <head>
-<?php
-// Connexion à la base de données (à remplacer par tes informations de connexion)
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "innovation_design";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $numero_telephone = $_POST['numero_telephone'];
-    $email = $_POST['email'];
-    $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT)//mdp securise et hachee
-    $sql = "INSERT INTO utilisateurs (nom, prenom, numero_telephone, email, mot_de_passe)
-            VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $nom, $prenom, $numero_telephone, $email, $mot_de_passe);
-    $stmt->execute();
-    $stmt->close();
-    header("Location: inscription_reussie.php");
-    die();
-}
-$conn->close();
-?>
     <style>
     /*
     default element
@@ -280,33 +282,33 @@ a{
         Veuillez entrer vos details personnel et demarrez votre journee sur ino design
       </p>
       <form method="post" action="login.php">
-                <button type="submit" name="connexion_submit" class="btn-link connexion">Se connecter</button>
-            </form>
+        <button type="submit" name="connexion_submit" class="btn-link connexion">Se connecter</button>
+    </form>
     </div>
     <div id="inscription">
       <h1 class="title">Creer un compte</h1>
       <p class="paragraphe">
         Veuillez remplir tous les champs
       </p>
-      <form class="formulaire">
+      <form class="formulaire" method="POST" action="">
         <div class="group-form">
-          <input type="text" placeholder="Nom">
+          <input type="text" placeholder="Nom" name="nom">
           <div class="icon-user"></div>
         </div>
         <div class="group-form">
-          <input type="text" placeholder="prenom">
+          <input type="text" placeholder="prenom" name="prenom">
           <div class="icon-user"></div>
         </div>
         <div class="group-form">
-          <input type="text" placeholder="numero téléphone">
+          <input type="text" placeholder="numero téléphone" name="numero_telephone">
           <div class="icon-user"></div>
         </div>
         <div class="group-form">
-          <input type="email" placeholder="e-mail">
+          <input type="email" placeholder="e-mail" name="email">
           <div class="icon-mail"></div>
         </div>
         <div class="group-form">
-          <input type="password" placeholder="password">
+          <input type="password" placeholder="password" name="mot_de_passe">
           <div class="icon-password"></div>
         </div>
         <div class="group-form">

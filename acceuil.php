@@ -53,13 +53,13 @@
                     </div>
                     <div class="col-lg-5 px-5 text-end">
                         <div class="d-inline-flex align-items-center py-2">
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="https://www.facebook.com/profile.php?id=100007252156528">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="https://www.linkedin.com/in/oumaima-mahjoub-97a23826a/">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
