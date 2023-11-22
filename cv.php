@@ -229,19 +229,6 @@
                     </div>
                 </div>
                 <!-- Search Form End -->
-
-                <!-- Category Start -->
-                <div class="mb-5">
-                    <h3 class="text-uppercase mb-4">Categories</h3>
-                    <div class="d-flex flex-column justify-content-start bg-dark rounded p-4">
-                        <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Web Design</a>
-                        <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Web Development</a>
-                        <a class="fs-5 fw-bold text-light text-uppercase" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Email Marketing</a>
-                    </div>
-                </div>
-                <!-- Category End -->
-
-               
                 <!-- Tags Start -->
                 <div class="mb-5">
                     <h3 class="text-uppercase mb-4">Tag Cloud</h3>

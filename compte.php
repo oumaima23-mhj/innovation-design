@@ -1,6 +1,5 @@
 <?php
     if ($_POST){
-        // Connexion à la base de données (à remplacer par tes informations de connexion)
         $servername = "localhost";
         $username = "root";
         $password = "";

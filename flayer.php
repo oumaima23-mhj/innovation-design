@@ -27,6 +27,20 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <script> 
+    const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+
+searchInput.addEventListener('input', function(event) {
+    const searchText = event.target.value.trim();
+    // Logique de recherche
+});
+
+searchButton.addEventListener('click', function() {
+    const searchText = searchInput.value.trim();
+    // Action au clic sur le bouton de recherche
+});
+</script>
 </head>
 
 <body>
@@ -199,9 +213,6 @@
             </div>
             <div class="col-md-6">
                 <div class="blog-item">
-                    <div class="position-relative overflow-hidden rounded-top">
-                        <img class="img-fluid" src="flayers/f88.webp" alt="" height="1500px" width="1600px"> 
-                    </div>
                   
                     <div class="col-12">
                         <nav aria-label="Page navigation">
@@ -230,25 +241,12 @@
             <div class="col-lg-4">
                 <!-- Search Form Start -->
                 <div class="mb-5">
-                    <div class="input-group">
-                        <input type="text" class="form-control p-3" placeholder="recherche">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-                <!-- Search Form End -->
-
-                <!-- Category Start -->
-                <div class="mb-5">
-                    <h3 class="text-uppercase mb-4">Categories</h3>
-                    <div class="d-flex flex-column justify-content-start bg-dark rounded p-4">
-                        <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Web Design</a>
-                        <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Web Development</a>
-                        <a class="fs-5 fw-bold text-light text-uppercase" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Email Marketing</a>
-                    </div>
-                </div>
-                <!-- Category End -->
-
-               
+        <div class="input-group">
+            <input id="searchInput" type="text" class="form-control p-3" placeholder="Recherche">
+            <button id="searchButton" class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+        </div>
+    </div>
+                <!-- Search Form End --> 
                 <!-- Tags Start -->
                 <div class="mb-5">
                     <h3 class="text-uppercase mb-4">Tag Cloud</h3>

@@ -236,7 +236,7 @@
                     </div>
                     <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: #0841d3e6;">
                         <h5 class="text-uppercase text-light">John Deo</h5>
-                        <p class="text-uppercase text-secondary m-0">Trainer</p>
+                        <p class="text-uppercase text-secondary m-0">expert</p>
                     </div>
                 </div>
             </div>
@@ -254,7 +254,7 @@
                     </div>
                     <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: #0841d3e6;">
                         <h5 class="text-uppercase text-light">James Taylor</h5>
-                        <p class="text-uppercase text-secondary m-0">Trainer</p>
+                        <p class="text-uppercase text-secondary m-0">expert</p>
                     </div>
                 </div>
             </div>
@@ -272,7 +272,7 @@
                     </div>
                     <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: #0841d3e6;">
                         <h5 class="text-uppercase text-light">Adam Phillips</h5>
-                        <p class="text-uppercase text-secondary m-0">Trainer</p>
+                        <p class="text-uppercase text-secondary m-0">expert</p>
                     </div>
                 </div>
             </div>

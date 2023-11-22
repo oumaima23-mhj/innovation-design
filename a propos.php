@@ -1,64 +1,11 @@
 <?php
-if ($_POST) {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "innovation_design";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("La connexion a échoué : " . $conn->connect_error);
-    }
-    $sql = "SELECT * FROM `user` where `nom`='" . $_POST['nom'] . "' and `prenom`='" . $_POST['prenom'] . "';";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-?>
-            <div class="d-flex mb-4">
-                <img src="<?php echo $row['image']; ?>" class="img-fluid rounded" style="width: 45px; height: 45px;">
-                <div class="ps-3">
-                    <h6><a href=""><?php echo $row['auteur']; ?></a> <small><i><?php echo $row['date_commentaire']; ?></i></small></h6>
-                    <p><?php echo $row['contenu']; ?></p>
-                    <button class="btn btn-sm btn-secondary">repondre</button>
-                </div>
-            </div>
-            <form method="post" action="traitement_reponse.php">
-                <input type="hidden" name="comment_id" value="<?php echo $row['id_commentaire']; ?>">
-                <textarea name="reply_content" placeholder="Votre réponse"></textarea>
-                <button type="submit" class="btn btn-sm btn-secondary">Répondre</button>
-            </form>
-<?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $commentId = $_POST['comment_id'];
-                $replyContent = $_POST['reply_content'];
-                // Ajoutez votre logique de traitement de la réponse ici
-
-                // Redirigez après le traitement
-                header("Location: " . $_SERVER["HTTP_REFERER"]);
-                exit();
-            }
-        }
-    } else {
-        echo "Aucun commentaire trouvé.";
-    }
-    $conn->close();
+session_start();
+if(isset($_SESSION['server_url'])) {
+    header("location: /innovation-design/acceuil.php");
+    die();
 }
-?>
-<!DOCTYPE html>
-<!-- Le reste de votre code HTML reste inchangé après cette section -->
-Cette version supprime la fermeture prématurée des balises PHP pour permettre l'intégration correcte du code HTML dans la boucle while. Cependant, assurez-vous de sécuriser vos requêtes SQL contre les injections en utilisant des requêtes préparées lorsque vous travaillez avec des données d'utilisateur.
 
-
-
-
-User
-corrige
-ChatGPT
-Bien sûr, voici le code corrigé en séparant correctement les sections PHP et HTML, et en ajoutant des commentaires pour plus de clarté :
-
-php
-Copy code
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -67,39 +14,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("La connexion a échoué : " . $conn->connect_error);
     }
+    $image = $_POST['image'];
+    $date = $_POST['date'];
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $sql = "SELECT id_commentaire, id_utilisateur, text, date_commentaire, nom, prenom, image 
+            FROM commentaire 
+            INNER JOIN user ON commentaire.id_utilisateur = user.id";
 
-    // Utilisez des requêtes préparées pour éviter les injections SQL
-    $sql = "SELECT * FROM `user` where `nom`=? and `prenom`=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $_POST['nom'], $_POST['prenom']);
+    $stmt->bind_param("ssss", $image, $date, $nom, $prenom);
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // Traite le résultat si nécessaire
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            // Affichage des commentaires et des formulaires de réponse
-?>
-            <div class="d-flex mb-4">
-                <img src="<?php echo $row['image']; ?>" class="img-fluid rounded" style="width: 45px; height: 45px;">
-                <div class="ps-3">
-                    <h6><a href=""><?php echo $row['auteur']; ?></a> <small><i><?php echo $row['date_commentaire']; ?></i></small></h6>
-                    <p><?php echo $row['contenu']; ?></p>
-                    <button class="btn btn-sm btn-secondary">repondre</button>
-                </div>
-            </div>
-            <form method="post" action="traitement_reponse.php">
-                <input type="hidden" name="comment_id" value="<?php echo $row['id_commentaire']; ?>">
-                <textarea name="reply_content" placeholder="Votre réponse"></textarea>
-                <button type="submit" class="btn btn-sm btn-secondary">Répondre</button>
-            </form>
-<?php
         }
-    } else {
-        echo "Aucun commentaire trouvé.";
     }
-
-    $stmt->close();
-    $conn->close();
+}
+if(isset($_SESSION['utilisateur_connecte'])) {
+    echo "L'utilisateur est connecté.";
+} else {
+    echo "L'utilisateur n'est pas connecté.";
 }
 ?>
 <!DOCTYPE html>
@@ -111,31 +48,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="google.css" rel="stylesheet"> 
-    <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-<!-- Header Start -->
 <div class="container-fluid bg-dark px-0">
     <div class="row gx-0">
         <div class="col-lg-3 bg-dark d-none d-lg-block">
@@ -207,11 +132,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </div>
-<!-- Header End -->
-
-
-   
-    <!-- Hero Start -->
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
@@ -220,23 +140,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
-    <!-- Hero End -->
 
-
-    <!-- Blog Start -->
     <div class="container-fluid p-5">
         <div class="row g-5">
             <div class="col-lg-8">
-                <!-- Blog Detail Start -->
                 <div class="mb-5">
                     <img class="img-fluid w-100 rounded mb-5" src="img/blog-1.jpg" alt="">
                     Notre entreprise de design graphique se spécialise dans la création de logos, de flyers, de publicités, de cartes de visite et d'affiches. Nous collaborons avec des clients de différents secteurs pour développer des designs uniques et efficaces qui reflètent leur image de marque et leur message. Nous utilisons les dernières tendances et technologies pour créer des designs de qualité professionnelle qui se démarquent de la concurrence. Nous aimons travailler en étroite collaboration avec nos clients pour comprendre leurs besoins et créer des designs qui répondent à leurs objectifs commerciaux.</p>
                     <p>Notre équipe de designers expérimentés possède une grande expertise dans la création de designs visuels impactants qui attirent l'attention et suscitent l'intérêt. Nous nous engageons à offrir un service personnalisé et à écouter les besoins de nos clients pour garantir qu'ils sont entièrement satisfaits du résultat final. Nous nous tenons à jour des dernières tendances de design et de communication pour nous assurer que nos créations soient toujours innovantes et pertinentes. Nous croyons que le design est un élément clé pour toute entreprise qui souhaite se démarquer et réussir sur le marché.</p>
                     <p>En somme, notre entreprise de design graphique est là pour aider les entreprises à se démarquer en créant des designs professionnels, uniques et efficaces qui reflètent leur image de marque. Nous sommes passionnés par le design et nous nous engageons à offrir un service personnalisé et à écouter les besoins de nos clients pour garantir qu'ils sont entièrement satisfaits des résultats.</p>
-                </div>
-                <!-- Blog Detail End -->
-
-                <!-- Comment List Start -->
+</div>
                 <div class="mb-5">
                     <h3 class="text-uppercase mb-4">3 Comments</h3>
                     <div class="d-flex mb-4">
@@ -245,6 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <h6><a href="">aminemahj</a> <small><i>28 Jan 2023</i></small></h6>
                             <p>Notre entreprise a fait appel aux services de cette société de design graphique pour créer notre logo et nous sommes absolument ravis du résultat! Les designers ont compris notre vision et ont su créer un logo qui reflète parfaitement notre image de marque. Le processus de création a été fluide et professionnel, et nous avons apprécié leur engagement à nous écouter et à répondre à nos besoins.</p>
                             <button class="btn btn-sm btn-secondary">Repondre</button>
+                            
                         </div>
                     </div>
                     <div class="d-flex mb-4">
@@ -264,13 +178,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                 </div>
-                <!-- Comment List End -->
         </div>
-    </div>
-    <!-- Blog End -->
-    
-
-    <!-- Footer Start -->
+</div>
     <div class="container-fluid bg-dark text-secondary px-5 mt-5">
         <div class="row gx-5">
             <div class="col-lg-8 col-md-6">
