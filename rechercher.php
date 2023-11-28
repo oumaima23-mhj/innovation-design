@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 $servername = "localhost";
 $username = "root";
@@ -54,3 +55,6 @@ mysqli_close($conn);
     </div>
 </body>
 </html>
+=======
+rechercher.php
+>>>>>>> 54639117ddb54666a39013748e2fe6add5f7bc12
