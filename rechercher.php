@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 $servername = "localhost";
 $username = "root";
@@ -24,10 +23,10 @@ if(isset($_POST['search'])) {
         while ($row = mysqli_fetch_assoc($result)) { 
            echo "<li>";
            echo "<a href='cv.php?id=" . $row['carte'] . "'>CV</a>";
-           echo ", <a href='affiches.php?id=" . $row['affiches'] . "'>Affiches</a>";
+           echo ", <a href='affiche.php?id=" . $row['affiches'] . "'>Affiche</a>";
            echo ", <a href='logo.php?id=" . $row['logo'] . "'>Logo</a>";
            echo ", <a href='pub.php?id=" . $row['pub'] . "'>Pub</a>";
-           echo ", <a href='flayers.php?id=" . $row['flyers'] . "'>Flyers</a>";
+           echo ", <a href='flayer.php?id=" . $row['flyers'] . "'>Flyer</a>";
            echo "</li>";
         }
         echo "</ul>";
@@ -43,18 +42,17 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page de recherche</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <br>
     <div class="mb-5">
         <div class="input-group">
-            <form action="recherche.php" method="post">
+            <form action="rechercher.php" method="post" style="margin:0px;max-width:150px">
                 <input id="searchInput" type="text" name="search" placeholder="Recherche..." class="form-control p-3">
-                <button id="searchButton" class="btn btn-primary px-4" type="submit">Rechercher</button>
+                <button id="searchButton" class="btn btn-primary px-4" type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
 </body>
 </html>
-=======
-rechercher.php
->>>>>>> 54639117ddb54666a39013748e2fe6add5f7bc12

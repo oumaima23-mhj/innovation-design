@@ -141,7 +141,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p>En somme, notre entreprise de design graphique est là pour aider les entreprises à se démarquer en créant des designs professionnels, uniques et efficaces qui reflètent leur image de marque. Nous sommes passionnés par le design et nous nous engageons à offrir un service personnalisé et à écouter les besoins de nos clients pour garantir qu'ils sont entièrement satisfaits des résultats.</p>
                 </div>
                 <div class="mb-5">
-                    <h3 class="text-uppercase mb-4">3 Comments</h3>
                     <div class="d-flex mb-4">
                         <img src="img/user.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
                         <div class="ps-3">

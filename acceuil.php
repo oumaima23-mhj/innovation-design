@@ -1,3 +1,14 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "innovation_design";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$conn) {
+    die("Connexion échouée : " . mysqli_connect_error());
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,7 +135,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             
                             <h1 class="display-2 text-white text-uppercase mb-md-4"> Commandez en ligne dès maintenant sur notre site web</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">abonné-vous</a>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">abonnez-vous</a>
                             <a href="" class="btn btn-light py-md-3 px-md-5">Contactez-nous</a>
                         </div>
                     </div>
@@ -288,7 +299,6 @@
             </div>
             <div class="col-lg-6 bg-dark p-5">
                 <div class="mb-5">
-                    <h5 class="text-primary text-uppercase">Testimonial</h5>
                     <h1 class="display-3 text-uppercase text-light mb-0">nos client disent</h1>
                 </div>
                 <div class="owl-carousel testimonial-carousel">
@@ -298,7 +308,7 @@
                             <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" alt="">
                             <div class="ps-4">
                                 <h5 class="text-uppercase text-light">Client Name</h5>
-                                <span class="text-uppercase text-secondary">Profession</span>
+                
                             </div>
                         </div>
                     </div>
@@ -308,7 +318,7 @@
                             <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" alt="">
                             <div class="ps-4">
                                 <h5 class="text-uppercase text-light">Client Name</h5>
-                                <span class="text-uppercase text-secondary">Profession</span>
+                        
                             </div>
                         </div>
                     </div>
