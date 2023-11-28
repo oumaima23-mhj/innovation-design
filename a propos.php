@@ -33,11 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-if(isset($_SESSION['utilisateur_connecte'])) {
-    echo "L'utilisateur est connecté.";
-} else {
-    echo "L'utilisateur n'est pas connecté.";
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,28 +76,21 @@ if(isset($_SESSION['utilisateur_connecte'])) {
                     </div>
                 </div>
                 <div class="col-lg-5 px-5 text-end">
-                    <div class="d-inline-flex align-items-center py-2">
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle" href="">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
+                <div class="d-inline-flex align-items-center py-2">
+                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
                 <a href="acceuil.php" class="navbar-brand d-block d-lg-none">
-                    
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -125,8 +113,10 @@ if(isset($_SESSION['utilisateur_connecte'])) {
                             </div>
                         </div>
                         
-                    </div>
-                    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
+                        </div>
+                    <?php
+                         include('rechercher.php');
+                     ?>
                 </div>
             </nav>
         </div>
@@ -149,7 +139,7 @@ if(isset($_SESSION['utilisateur_connecte'])) {
                     Notre entreprise de design graphique se spécialise dans la création de logos, de flyers, de publicités, de cartes de visite et d'affiches. Nous collaborons avec des clients de différents secteurs pour développer des designs uniques et efficaces qui reflètent leur image de marque et leur message. Nous utilisons les dernières tendances et technologies pour créer des designs de qualité professionnelle qui se démarquent de la concurrence. Nous aimons travailler en étroite collaboration avec nos clients pour comprendre leurs besoins et créer des designs qui répondent à leurs objectifs commerciaux.</p>
                     <p>Notre équipe de designers expérimentés possède une grande expertise dans la création de designs visuels impactants qui attirent l'attention et suscitent l'intérêt. Nous nous engageons à offrir un service personnalisé et à écouter les besoins de nos clients pour garantir qu'ils sont entièrement satisfaits du résultat final. Nous nous tenons à jour des dernières tendances de design et de communication pour nous assurer que nos créations soient toujours innovantes et pertinentes. Nous croyons que le design est un élément clé pour toute entreprise qui souhaite se démarquer et réussir sur le marché.</p>
                     <p>En somme, notre entreprise de design graphique est là pour aider les entreprises à se démarquer en créant des designs professionnels, uniques et efficaces qui reflètent leur image de marque. Nous sommes passionnés par le design et nous nous engageons à offrir un service personnalisé et à écouter les besoins de nos clients pour garantir qu'ils sont entièrement satisfaits des résultats.</p>
-</div>
+                </div>
                 <div class="mb-5">
                     <h3 class="text-uppercase mb-4">3 Comments</h3>
                     <div class="d-flex mb-4">
@@ -170,16 +160,25 @@ if(isset($_SESSION['utilisateur_connecte'])) {
                         </div>
                     </div>
                     <div class="d-flex ms-5 mb-4">
-                        <img src="img/img2.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
                         <div class="ps-3">
-                            <h6><a href="">alberto shneider</a> <small><i>01 fev 2021</i></small></h6>
-                            <p>J'ai fait appel à cette société pour créer ma carte de visite professionnelle et j'ai été très satisfait du résultat final. Les designers ont été très attentifs à mes besoins et ont créé un design qui reflète parfaitement mon image de marque. Le processus de création a été rapide et efficace, et j'ai été impressionné par leur engagement à garantir ma satisfaction.</p>
-                            <button class="btn btn-sm btn-secondary">Repondre</button>
+                            <h3> Connectez-vous pour pouvoir commenter". ?</h3>
+                            <a href="login.php" class="btn btn-primary">login</a>
+                            <br><br>
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <textarea class="form-control bg-light border-0 px-4 py-3" cols="100" rows="4" placeholder="Message"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary py-3" type="submit">Comment</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-</div>
     <div class="container-fluid bg-dark text-secondary px-5 mt-5">
         <div class="row gx-5">
             <div class="col-lg-8 col-md-6">

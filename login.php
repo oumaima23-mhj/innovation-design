@@ -145,12 +145,9 @@ form br {
                         </div>
                     </div>
                     <div class="col-lg-5 px-5 text-end">
-                        <div class="d-inline-flex align-items-center py-2">
+                    <div class="d-inline-flex align-items-center py-2">
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-twitter"></i>
                             </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-linkedin-in"></i>
@@ -158,9 +155,7 @@ form br {
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="btn btn-light btn-square rounded-circle" href="">
-                                <i class="fab fa-youtube"></i>
-                            </a>
+                
                         </div>
                     </div>
                 </div>
@@ -193,9 +188,11 @@ form br {
                 <a href="pub.php" class="dropdown-item">service publicités</a>
             </div>
         </div>
-    </div>
-    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
-</div>
+        </div>
+                    <?php
+                         include('rechercher.php');
+                     ?>
+                </div>
             </nav>
     
             </div>

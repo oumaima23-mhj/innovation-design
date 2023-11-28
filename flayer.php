@@ -14,18 +14,11 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="google.css" rel="stylesheet"> 
-    <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <script> 
     const searchInput = document.getElementById('searchInput');
@@ -33,12 +26,10 @@ const searchButton = document.getElementById('searchButton');
 
 searchInput.addEventListener('input', function(event) {
     const searchText = event.target.value.trim();
-    // Logique de recherche
 });
 
 searchButton.addEventListener('click', function() {
     const searchText = searchInput.value.trim();
-    // Action au clic sur le bouton de recherche
 });
 </script>
 </head>
@@ -65,12 +56,9 @@ searchButton.addEventListener('click', function() {
                         </div>
                     </div>
                     <div class="col-lg-5 px-5 text-end">
-                        <div class="d-inline-flex align-items-center py-2">
+                    <div class="d-inline-flex align-items-center py-2">
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-twitter"></i>
                             </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-linkedin-in"></i>
@@ -78,9 +66,7 @@ searchButton.addEventListener('click', function() {
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="btn btn-light btn-square rounded-circle" href="">
-                                <i class="fab fa-youtube"></i>
-                            </a>
+                
                         </div>
                     </div>
                 </div>
@@ -109,8 +95,10 @@ searchButton.addEventListener('click', function() {
                             </div>
                         </div>
                         
-                    </div>
-                    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
+                        </div>
+                    <?php
+                         include('rechercher.php');
+                     ?>
                 </div>
             </nav>
             </div>
@@ -235,35 +223,6 @@ searchButton.addEventListener('click', function() {
                     </div>
                 </div>
             </div>
-            <!-- Blog list End -->
-
-            <!-- Sidebar Start -->
-            <div class="col-lg-4">
-                <!-- Search Form Start -->
-                <div class="mb-5">
-        <div class="input-group">
-            <input id="searchInput" type="text" class="form-control p-3" placeholder="Recherche">
-            <button id="searchButton" class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-        </div>
-    </div>
-                <!-- Search Form End --> 
-                <!-- Tags Start -->
-                <div class="mb-5">
-                    <h3 class="text-uppercase mb-4">Tag Cloud</h3>
-                    <div class="d-flex flex-wrap m-n1">
-                        <a href="" class="btn btn-dark m-1">Design</a>
-                        <a href="" class="btn btn-dark m-1">Development</a>
-                        <a href="" class="btn btn-dark m-1">Marketing</a>
-                        <a href="" class="btn btn-dark m-1">Writing</a>
-                        <a href="" class="btn btn-dark m-1">Consulting</a>
-                    </div>
-                </div>
-                <!-- Tags End -->
-            </div>
-            <!-- Sidebar End -->
-        </div>
-    </div>
-    <!-- Blog End -->
 
 
     <!-- Footer Start -->

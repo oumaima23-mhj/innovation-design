@@ -222,12 +222,9 @@ a{
                         </div>
                     </div>
                     <div class="col-lg-5 px-5 text-end">
-                        <div class="d-inline-flex align-items-center py-2">
+                    <div class="d-inline-flex align-items-center py-2">
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-twitter"></i>
                             </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-linkedin-in"></i>
@@ -235,9 +232,7 @@ a{
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="btn btn-light btn-square rounded-circle" href="">
-                                <i class="fab fa-youtube"></i>
-                            </a>
+                
                         </div>
                     </div>
                 </div>
@@ -266,8 +261,10 @@ a{
                             </div>
                         </div>
                         
-                    </div>
-                    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
+                        </div>
+                    <?php
+                         include('rechercher.php');
+                     ?>
                 </div>
             </nav>
             </div>
@@ -281,7 +278,7 @@ a{
         Veuillez entrer vos details personnel et demarrez votre journee sur ino design
       </p>
       <form method="post" action="login.php">
-        <button type="submit" name="connexion_submit" class="btn-link connexion">Se connecter</button>
+      <a href="login.php" class="btn btn-primary py-md-3 px-md-5 me-3">se connecter</a>
     </form>
     </div>
     <div id="inscription">
@@ -289,7 +286,7 @@ a{
       <p class="paragraphe">
         Veuillez remplir tous les champs
       </p>
-      <form class="formulaire" method="POST" action="">
+      <form class="formulaire" method="POST" action="login.php">
         <div class="group-form">
           <input type="text" placeholder="Nom" name="nom">
           <div class="icon-user"></div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,12 +52,9 @@
                         </div>
                     </div>
                     <div class="col-lg-5 px-5 text-end">
-                        <div class="d-inline-flex align-items-center py-2">
+                    <div class="d-inline-flex align-items-center py-2">
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-twitter"></i>
                             </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-linkedin-in"></i>
@@ -64,9 +62,7 @@
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="btn btn-light btn-square rounded-circle" href="">
-                                <i class="fab fa-youtube"></i>
-                            </a>
+                
                         </div>
                     </div>
                 </div>
@@ -95,8 +91,10 @@
                             </div>
                         </div>
                         
-                    </div>
-                    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
+                        </div>
+                    <?php
+                         include('rechercher.php');
+                     ?>
                 </div>
             </nav>
             </div>
@@ -217,37 +215,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Blog list End -->
-
-            <!-- Sidebar Start -->
-            <div class="col-lg-4">
-                <!-- Search Form Start -->
-                <div class="mb-5">
-                    <div class="input-group">
-                        <input type="text" class="form-control p-3" placeholder="Keyword">
-                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-                <!-- Search Form End -->
-                <!-- Tags Start -->
-                <div class="mb-5">
-                    <h3 class="text-uppercase mb-4">Tag Cloud</h3>
-                    <div class="d-flex flex-wrap m-n1">
-                        <a href="" class="btn btn-dark m-1">Design</a>
-                        <a href="" class="btn btn-dark m-1">Development</a>
-                        <a href="" class="btn btn-dark m-1">Marketing</a>
-                        <a href="" class="btn btn-dark m-1">Writing</a>
-                        <a href="" class="btn btn-dark m-1">Consulting</a>
-                    </div>
-                </div>
-                <!-- Tags End -->
-            </div>
-            <!-- Sidebar End -->
-        </div>
-    </div>
-    <!-- Blog End -->
-
-
+    
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary px-5 mt-5">
         <div class="row gx-5">
@@ -311,7 +279,6 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>

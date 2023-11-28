@@ -52,12 +52,9 @@
                         </div>
                     </div>
                     <div class="col-lg-5 px-5 text-end">
-                        <div class="d-inline-flex align-items-center py-2">
+                    <div class="d-inline-flex align-items-center py-2">
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-twitter"></i>
                             </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-linkedin-in"></i>
@@ -65,9 +62,7 @@
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="btn btn-light btn-square rounded-circle" href="">
-                                <i class="fab fa-youtube"></i>
-                            </a>
+                
                         </div>
                     </div>
                 </div>
@@ -96,8 +91,10 @@
                             </div>
                         </div>
                         
-                    </div>
-                    <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">abonnez-vous</a>
+                        </div>
+                    <?php
+                         include('rechercher.php');
+                     ?>
                 </div>
             </nav>
             </div>
@@ -111,8 +108,10 @@
         <div class="row py-5">
             <div class="col-12 text-center">
                 <h1 class="display-2 text-uppercase text-white mb-md-4">Contact</h1>
-                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">s'inscrire</a>
-                <a href="" class="btn btn-light py-md-3 px-md-5">Contact</a>
+                <form method="post" action="compte.php">
+                <a href="compte.php" class="btn btn-primary py-md-3 px-md-5 me-3">s'inscrire</a>
+                <a href="compte.php" class="btn btn-light py-md-3 px-md-5">Contact</a>
+                <form>
             </div>
         </div>
     </div>
@@ -172,7 +171,7 @@
                                 <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Message"></textarea>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit">envoyer Message</button>
                             </div>
                         </div>
                     </form>
