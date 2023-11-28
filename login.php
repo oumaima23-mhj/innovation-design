@@ -1,7 +1,9 @@
 <?php
 // Start the session
 session_start();
-
+if(!empty($_SESSION["id"])) { 
+    header("location: /innovation-design/acceuil.php");
+}
 $error = False;
 if ($_POST){
     $servername = "localhost";

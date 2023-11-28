@@ -99,8 +99,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="navbar-nav mr-auto py-0">
                         <a href="acceuil.php" class="nav-item nav-link active">acceuil</a>
                         <a href="a propos.php" class="nav-item nav-link">a propos</a>
-                        <a href="compte.php" class="nav-item nav-link">compte</a>
-                        <a href="contact.php" class="nav-item nav-link">contact</a>
+                        <a 
+                        <?php if(isset($_SESSION["id"]) && !empty($_SESSION["id"])) {echo"hidden";}?>
+                        href="compte.php" class="nav-item nav-link">compte</a> 
+                        <a  href="contact.php" class="nav-item nav-link">contact</a>
                         <?php 
     if(!isset($_SESSION["id"]) || empty($_SESSION["id"])) { ?>
         <a href="login.php" class="nav-item nav-link">login</a>
@@ -109,11 +111,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php } ?>                      <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="logo.php" class="dropdown-item active">services logo</a>
-                                <a href="flayer.php" class="dropdown-item">service flyers</a>
-                                <a href="cv.php" class="dropdown-item">service carte visite</a>
-                                <a href="affiche.php" class="dropdown-item">service des affiches</a>
-                                <a href="pub.php" class="dropdown-item">service publicités</a>
+                            <?php if(isset($_SESSION["id"]) && !empty($_SESSION["id"])) { ?>
+    <a href="services/dlogo.php" class="dropdown-item active">demande logo</a>
+    <a href="services/dflayer.php" class="dropdown-item">demande flyers</a>
+    <a href="services/dcv.php" class="dropdown-item">demande carte visite</a>
+    <a href="services/daffiche.php" class="dropdown-item">demande des affiches</a>
+    <a href="services/dpub.php" class="dropdown-item">demande publicités</a>
+<?php } else { ?>
+    <a href="logo.php" class="dropdown-item active">services logo</a>
+    <a href="flayer.php" class="dropdown-item">service flyers</a>
+    <a href="cv.php" class="dropdown-item">service carte visite</a>
+    <a href="affiche.php" class="dropdown-item">service des affiches</a>
+    <a href="pub.php" class="dropdown-item">service publicités</a>
+<?php } ?>
                             </div>
                         </div>
                         

@@ -14,7 +14,7 @@ session_start();
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="../img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,7 +23,7 @@ session_start();
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="../lib/flaticon/font/flaticon.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -122,63 +122,38 @@ session_start();
     </div>
 
 
-    <form action="creation/dlogo.php" method="post" enctype="multipart/form-data">
-
-<div class="row g-3">
-
-  <div class="col-6">
-    <label for="nom_entreprise">Nom de l'entreprise</label>
-    <input type="text" name="nom_entreprise" id="nom_entreprise" class="form-control bg-light border-0 px-4" placeholder="Entrez le nom de votre entreprise" style="height: 55px;">
-  </div>
-
-  <div class="col-6">
-    <label for="couleurs">Sélectionnez vos couleurs préférées</label>
-    <select multiple size="5" name="couleurs[]" id="couleurs" class="form-control bg-light border-0 px-4">
-      <option value="selectionee" disabled>Sélectionnez une couleur</option>
-      <option value="Red">Rouge</option>
-      <option value="Blue">Bleu</option>
-      <option value="Green">Vert</option>
-      <option value="Yellow">Jaune</option>
-      <option value="Purple">Violet</option>
-      <option value="Orange">Orange</option>
-      <option value="Pink">Rose</option>
-      <option value="Black">Noir</option>
-      <option value="White">Blanc</option>
-      <option value="Brown">Marron</option>
-      <option value="Gray">Gris</option>
-      <option value="Gold">Or</option>
-      <option value="Silver">Argent</option>
-      <option value="Cyan">Cyan</option>
-    </select>
-  </div>
-
-  <div class="col-12">
-    <label for="description_entreprise">Description de l'entreprise</label>
-    <textarea name="description_entreprise" id="description_entreprise" class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Décrivez brièvement votre entreprise"></textarea>
-  </div>
-
-  <div class="col-12">
-    <label for="exemple_1">Exemple 1</label>
-    <input type="file" name="exemple_1" id="exemple_1" class="form-control bg-light border-0 px-4" placeholder="Téléverser l'exemple 1" style="height: 55px;">
-  </div>
-
-  <div class="col-12">
-    <label for="exemple_2">Exemple 2</label>
-    <input type="file" name="exemple_2" id="exemple_2" class="form-control bg-light border-0 px-4" placeholder="Téléverser l'exemple 2" style="height: 55px;">
-  </div>
-
-  <div class="col-12">
-    <label for="notes_supplementaires">Notes supplémentaires</label>
-    <textarea name="notes_supplementaires" id="notes_supplementaires" class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Ajoutez des notes supplémentaires si nécessaire"></textarea>
-  </div>
-
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary w-100 py-3">Envoyer la demande</button>
-  </div>
-
-</div>
-
-</form>
+    <h1>Demande de Carte de Visite</h1>
+  <form action="creation/dcv.php" method="post" enctype="multipart/form-data">
+    <div class="row g-3">
+      <div class="col-6">
+        <input type="text" class="form-control bg-light border-0 px-4" name="nom_entreprise" placeholder="Nom de l'entreprise" style="height: 55px;">
+      </div>
+      <div class="col-6">
+        <input type="text" class="form-control bg-light border-0 px-4" name="nom_personne_contact" placeholder="Nom du contact" style="height: 55px;">
+      </div>
+      <div class="col-12">
+        <input type="email" class="form-control bg-light border-0 px-4" name="email" placeholder="Email de contact" style="height: 55px;">
+      </div>
+      <div class="col-12">
+        <input type="tel" class="form-control bg-light border-0 px-4" name="telephone" placeholder="Téléphone de contact" style="height: 55px;">
+      </div>
+      <div class="col-12">
+        <textarea class="form-control bg-light border-0 px-4 py-3" name="adresse" rows="4" placeholder="Adresse de l'entreprise"></textarea>
+      </div>
+      <div class="col-12">
+        Exemple 1 <input type="file" name="exemple_1" class="form-control bg-light border-0 px-4" style="height: 55px;">
+      </div>
+      <div class="col-12">
+        Exemple 2 <input type="file" name="exemple_2" class="form-control bg-light border-0 px-4" style="height: 55px;">
+      </div>
+      <div class="col-12">
+        <textarea class="form-control bg-light border-0 px-4 py-3" name="notes_supplementaires" rows="4" placeholder="Notes supplémentaires"></textarea>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary w-100 py-3" type="submit">Envoyer demande</button>
+      </div>
+    </div>
+  </form>
 
 
       <!-- Footer Start -->
@@ -231,8 +206,8 @@ session_start();
         </div>
     </div>
     <!-- Footer End -->
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
 <!-- JavaScript Libraries -->
