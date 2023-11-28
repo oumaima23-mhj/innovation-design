@@ -91,9 +91,6 @@
                         </div>
                         
                         </div>
-                    <?php
-                         include('rechercher.php');
-                     ?>
                 </div>
             </nav>
             </div>

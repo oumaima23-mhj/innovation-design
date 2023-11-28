@@ -20,18 +20,6 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script> 
-    const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-
-searchInput.addEventListener('input', function(event) {
-    const searchText = event.target.value.trim();
-});
-
-searchButton.addEventListener('click', function() {
-    const searchText = searchInput.value.trim();
-});
-</script>
 </head>
 
 <body>
@@ -83,8 +71,12 @@ searchButton.addEventListener('click', function() {
                         <a href="a propos.php" class="nav-item nav-link">a propos</a>
                         <a href="compte.php" class="nav-item nav-link">compte</a>
                         <a href="contact.php" class="nav-item nav-link">contact</a>
-                        <a href="login.php" class="nav-item nav-link">login</a>
-                        <div class="nav-item dropdown">
+                        <?php 
+    if(!isset($_SESSION["id"]) || empty($_SESSION["id"])) { ?>
+        <a href="login.php" class="nav-item nav-link">login</a>
+<?php } else { ?>
+        <a href="logout.php" class="nav-item nav-link">logout</a>
+<?php } ?>                        <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="logo.php" class="dropdown-item active">services logo</a>
@@ -96,9 +88,6 @@ searchButton.addEventListener('click', function() {
                         </div>
                         
                         </div>
-                    <?php
-                         include('rechercher.php');
-                     ?>
                 </div>
             </nav>
             </div>
@@ -125,30 +114,6 @@ searchButton.addEventListener('click', function() {
             <!-- Blog list Start -->
             <div class="col-lg-8">
                 <div class="row g-5">
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="flayers/f.webp" alt="" height="1500px" width="1600px">
-                            </div>
-                          
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="flayers/f12.webp" alt="" height="1500px" width="1600px">
-                            </div>
-                           
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="flayers/f86.jpg" alt="" height="1500px" width="1600px">
-                            </div>
-                            
-                        </div>
-                    </div>
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
@@ -189,15 +154,7 @@ searchButton.addEventListener('click', function() {
                           
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="blog-item">
-                        <div class="position-relative overflow-hidden rounded-top">
-                            <img class="img-fluid" src="flayers/fayr.webp" alt="" height="1500px" width="1600px">
-                        </div>
-                      
-                    </div>
-                </div>
+</div>
             </div>
             <div class="col-md-6">
                 <div class="blog-item">

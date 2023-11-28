@@ -249,8 +249,12 @@ a{
                         <a href="a propos.php" class="nav-item nav-link">a propos</a>
                         <a href="compte.php" class="nav-item nav-link">compte</a>
                         <a href="contact.php" class="nav-item nav-link">contact</a>
-                        <a href="login.php" class="nav-item nav-link">login</a>
-                        <div class="nav-item dropdown">
+                        <?php 
+    if(!isset($_SESSION["id"]) || empty($_SESSION["id"])) { ?>
+        <a href="login.php" class="nav-item nav-link">login</a>
+<?php } else { ?>
+        <a href="logout.php" class="nav-item nav-link">logout</a>
+<?php } ?>                      <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="logo.php" class="dropdown-item active">services logo</a>
@@ -262,9 +266,7 @@ a{
                         </div>
                         
                         </div>
-                    <?php
-                         include('rechercher.php');
-                     ?>
+            
                 </div>
             </nav>
             </div>

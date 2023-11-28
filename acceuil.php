@@ -1,13 +1,20 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "innovation_design";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-if (!$conn) {
-    die("Connexion échouée : " . mysqli_connect_error());
-}
-
+session_start();
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "innovation_design";
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if (!$conn) {
+        die("Connexion échouée : " . mysqli_connect_error());
+    }
+    if(isset($_GET) && $_GET['search']) {
+        $search = $_GET['search'];
+        $sql = "SELECT * FROM services WHERE title LIKE '%" . $search . "%'";
+    } else {
+        $sql = "SELECT * FROM services";
+    }
+    $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +25,7 @@ if (!$conn) {
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
+    
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -39,6 +46,31 @@ if (!$conn) {
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style> 
+        input[type=text] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        background-image: url('searchicon.png');
+        background-position: 10px 10px; 
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        }
+
+        input[type=text]:focus {
+        width: 100%;
+        }
+    </style>
+    <script id=alert>
+function myFunction() {
+  alert("aucun resultat!");
+}
+</script>
 </head>
 
 <body>
@@ -73,7 +105,6 @@ if (!$conn) {
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                
                         </div>
                     </div>
                 </div>
@@ -90,22 +121,35 @@ if (!$conn) {
                         <a href="a propos.php" class="nav-item nav-link">a propos</a>
                         <a href="compte.php" class="nav-item nav-link">compte</a>
                         <a href="contact.php" class="nav-item nav-link">contact</a>
-                        <a href="login.php" class="nav-item nav-link">login</a>
-                        <div class="nav-item dropdown">
+                        <?php 
+    if(!isset($_SESSION["id"]) || empty($_SESSION["id"])) { ?>
+        <a href="login.php" class="nav-item nav-link">login</a>
+<?php } else { ?>
+        <a href="logout.php" class="nav-item nav-link">logout</a>
+<?php } ?>                      <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="logo.php" class="dropdown-item active">services logo</a>
-                                <a href="flayer.php" class="dropdown-item">service flyers</a>
-                                <a href="cv.php" class="dropdown-item">service carte visite</a>
-                                <a href="affiche.php" class="dropdown-item">service des affiches</a>
-                                <a href="pub.php" class="dropdown-item">service publicités</a>
+                            <?php if(isset($_SESSION["id"]) && !empty($_SESSION["id"])) { ?>
+    <a href="services/dlogo.php" class="dropdown-item active">demande logo</a>
+    <a href="dflayer.php" class="dropdown-item">demande flyers</a>
+    <a href="dcv.php" class="dropdown-item">demande carte visite</a>
+    <a href="daffiche.php" class="dropdown-item">demande des affiches</a>
+    <a href="dpub.php" class="dropdown-item">demande publicités</a>
+<?php } else { ?>
+    <a href="logo.php" class="dropdown-item active">services logo</a>
+    <a href="flayer.php" class="dropdown-item">service flyers</a>
+    <a href="cv.php" class="dropdown-item">service carte visite</a>
+    <a href="affiche.php" class="dropdown-item">service des affiches</a>
+    <a href="pub.php" class="dropdown-item">service publicités</a>
+<?php } ?>
+
                             </div>
                         </div>
                         
                     </div>
-                    <?php
-                         include('rechercher.php');
-                     ?>
+                    <form>
+                        <input type="text" name="search" placeholder="Search..">
+                    </form>
                 </div>
             </nav>
             </div>
@@ -179,47 +223,23 @@ if (!$conn) {
     <!-- Programe Start -->
     <div class="container-fluid programe position-relative px-5 mt-5" style="margin-bottom: 135px;">
         <div class="row g-5 gb-5">
-            <div class="col-lg-4 col-md-6">
-                <div class="bg-light rounded text-center p-5">
-                    <img src="img/i2.jpg" style="max-width: 200px; max-height: 200px;" alt="" srcset=""> 
-                    <h3 class="text-uppercase my-4">formats multiples</h3>                  
-                    <p> les logos sont livrés dans différents formats pour une utilisation sur différents supports (web, imprimés, etc.).</p>
-                    <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="bg-light rounded text-center p-5">
-                    <img src="img/i1.png" style="max-width: 200px; max-height: 200px;" alt="" srcset="">                    
-                    <h3 class="text-uppercase my-4">conceptions d'affiches</h3>
-                    <p> les clients peuvent commander des affiches professionnelles</p>
-                    <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="bg-light rounded text-center p-5">
-                    <img src="img/i1.png" style="max-width: 200px; max-height: 200px;" alt="" srcset="">                    
-                    <h3 class="text-uppercase my-4">Conception de cartes de visite</h3>
-                    <p> les clients peuvent commander des cartes de visite professionnelles utilisant leur nouveau logo.</p>
-                    <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="bg-light rounded text-center p-5">
-                    <img src="img/i1.png" style="max-width: 200px; max-height: 200px;" alt="" srcset="">                   
-                     <h3 class="text-uppercase my-4">Conception de flyers</h3>
-                    <p> les clients peuvent commander des flyers professionnels pour promouvoir leur entreprise utilisant leur nouveau logo.</p>
-                    <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="bg-light rounded text-center p-5">
-                    <img src="img/i1.png" style="max-width: 200px; max-height: 200px;" alt="" srcset="">
-                    <h3 class="text-uppercase my-4">Conception des publicités</h3>
-                    <p> les clients peuvent commander des publicités pour les réseaux sociaux ou les médias en ligne utilisant leur nouveau logo.</p>
-                    <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) { ?>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="bg-light rounded text-center p-5">
+                            <img src="<?= $row['image'] ?>" style="max-width: 200px; max-height: 200px;" alt="" srcset=""> 
+                            <h3 class="text-uppercase my-4"><?= $row["title"] ?></h3>                  
+                            <p><?= $row["description"] ?></p>
+                            <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                <?php }
+            } else {
+        
+            }
+            $conn->close();
+        ?>
         </div>
     </div>
     <!-- Programe Start -->

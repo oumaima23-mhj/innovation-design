@@ -79,7 +79,12 @@
                         <a href="a propos.php" class="nav-item nav-link">a propos</a>
                         <a href="compte.php" class="nav-item nav-link">compte</a>
                         <a href="contact.php" class="nav-item nav-link">contact</a>
-                        <a href="login.php" class="nav-item nav-link">login</a>
+                        <?php 
+    if(!isset($_SESSION["id"]) || empty($_SESSION["id"])) { ?>
+        <a href="login.php" class="nav-item nav-link">login</a>
+<?php } else { ?>
+        <a href="logout.php" class="nav-item nav-link">logout</a>
+<?php } ?>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
                             <div class="dropdown-menu rounded-0 m-0">
@@ -91,10 +96,7 @@
                             </div>
                         </div>
                         
-                        </div>
-                    <?php
-                         include('rechercher.php');
-                     ?>
+</div>
                 </div>
             </nav>
             </div>
@@ -145,22 +147,7 @@
                             
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="cv/cv4.jpg" alt="" height="1500px" width="1600px">
-                            </div>
-                           
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="cv/cv5.jpg" alt="" height="1500px" width="1600px">
-                            </div>
-                           
-                        </div>
-                    </div>
+                    
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">

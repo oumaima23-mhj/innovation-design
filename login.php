@@ -22,7 +22,7 @@ if ($_POST){
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         // Set session variables
-        $_SESSION["id"] = $row['utilisateur-id'];
+        $_SESSION["id"] = true;
 
         header("location: /innovation-design/acceuil.php");
         die();
@@ -172,11 +172,12 @@ form br {
         <a href="a propos.php" class="nav-item nav-link">apropos</a>
         <a href="compte.php" class="nav-item nav-link">compte</a>
         <a href="contact.php" class="nav-item nav-link">contact</a>
-        <?php if(isset($_SESSION['id']) and $_SESSION['id']) { ?>
-            <a href="login.php" class="nav-item nav-link">login</a>
-        <?php } else { ?>
-            <a href="logout.php" class="nav-item nav-link">logout</a>
-        <?php } ?>
+        <?php 
+    if(!isset($_SESSION["id"]) || empty($_SESSION["id"])) { ?>
+        <a href="login.php" class="nav-item nav-link">login</a>
+<?php } else { ?>
+        <a href="logout.php" class="nav-item nav-link">logout</a>
+<?php } ?>
 
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
@@ -189,9 +190,6 @@ form br {
             </div>
         </div>
         </div>
-                    <?php
-                         include('rechercher.php');
-                     ?>
                 </div>
             </nav>
     
@@ -216,6 +214,7 @@ form br {
         </div><br>
         <div class="group-form">
           <input type="submit" class="inscription" value="login">
+          <a href="compte.php"><input type="button" class="inscription" value="inscription"></a>
         </div>
       </form>
 
