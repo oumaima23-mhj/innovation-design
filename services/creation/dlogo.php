@@ -15,7 +15,7 @@ $exemple_2 = $_FILES["exemple_2"]["name"];
 $notes_supplementaires = $_POST["notes_supplementaires"];
 
 // Insertion des données dans la base de données
-$sql = "INSERT INTO demande_logo (nom_entreprise, couleurs, description_entreprise, exemple_1, exemple_2, notes_supplementaires) VALUES (:nom_entreprise, :couleurs, :description_entreprise, :exemple_1, :exemple_2, :notes_supplementaires)";
+$sql = "INSERT INTO demande_logo (nom_entreprise, description_entreprise, exemple_1, exemple_2, notes_supplementaires) VALUES (:nom_entreprise, :description_entreprise, :exemple_1, :exemple_2, :notes_supplementaires)";
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(":nom_entreprise", $nom_entreprise);
@@ -36,3 +36,4 @@ move_uploaded_file($_FILES["exemple_2"]["tmp_name"], $dossier_destinataire . $ex
 header("location: ../../acceuil.php");
 
 ?>
+
