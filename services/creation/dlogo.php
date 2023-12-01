@@ -33,7 +33,7 @@ move_uploaded_file($_FILES["exemple_1"]["tmp_name"], $dossier_destinataire . $ex
 move_uploaded_file($_FILES["exemple_2"]["tmp_name"], $dossier_destinataire . $exemple_2);
 
 // Affichage d'un message de succès
-header("location: ../../acceuil.php");
+header("location: ../../index.php");
 
 ?>
 

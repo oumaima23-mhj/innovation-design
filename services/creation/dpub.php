@@ -71,6 +71,6 @@ $stmt->bindParam(":remarques", $remarques);
 $stmt->execute();
 
 // Affichage d'un message de succès
-header("location: ../../acceuil.php");
+header("location: ../../index.php");
 
 ?>

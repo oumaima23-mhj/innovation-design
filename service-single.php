@@ -1,38 +1,45 @@
 <?php
-session_start();
-if(isset($_SESSION['server_url'])) {
-    header("location: /innovation-design/acceuil.php");
-    die();
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "innovation_design";
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("La connexion a échoué : " . $conn->connect_error);
+    session_start();
+    include ("db_connect.php");
+    
+    if(isset($_GET) && $_GET && $_GET['service_id']){
+        $sql = "SELECT * FROM `services` WHERE `service_id` = " . $_GET['service_id'] . ";";
+        $result = $conn->query($sql);
+        if ($result->num_rows == 1) {
+            $service = $result->fetch_assoc();
+            print_r($service);
+        }else{
+            header("Location: index.php");
+            die;
+        }
+    }else{
+        header("Location: index.php");
+        die;
     }
-    $image = $_POST['image'];
-    $date = $_POST['date'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $sql = "SELECT id_commentaire, id_utilisateur, text, date_commentaire, nom, prenom, image 
-            FROM commentaire 
-            INNER JOIN user ON commentaire.id_utilisateur = user.id";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $image, $date, $nom, $prenom);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        include("db_connect.php");
 
-    // Traite le résultat si nécessaire
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
+        $image = $_POST['image'];
+        $date = $_POST['date'];
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $sql = "SELECT id_commentaire, id_utilisateur, text, date_commentaire, nom, prenom, image 
+                FROM commentaire 
+                INNER JOIN user ON commentaire.id_utilisateur = user.id";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $image, $date, $nom, $prenom);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Traite le résultat si nécessaire
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+
+            }
         }
     }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,89 +63,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-<div class="container-fluid bg-dark px-0">
-    <div class="row gx-0">
-        <div class="col-lg-3 bg-dark d-none d-lg-block">
-            <a href="acceuil.php" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                <img src="oumayma.png" style="max-width: 80px; max-height: 80px;" >
-            </a>
-        </div>
-        <div class="col-lg-9">
-            <div class="row gx-0 bg-secondary d-none d-lg-flex">
-                <div class="col-lg-7 px-5 text-start">
-                    <div class="h-100 d-inline-flex align-items-center py-2 me-4">
-                        <i class="fa fa-envelope text-primary me-2"></i>
-                        <h6 class="mb-0">oumaymamhj83@gmail.com</h6>
-                    </div>
-                    <div class="h-100 d-inline-flex align-items-center py-2">
-                        <i class="fa fa-phone-alt text-primary me-2"></i>
-                        <h6 class="mb-0">+21651125770</h6>
-                    </div>
-                </div>
-                <div class="col-lg-5 px-5 text-end">
-                <div class="d-inline-flex align-items-center py-2">
-                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-                </div>
-            </div>
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                <a href="acceuil.php" class="navbar-brand d-block d-lg-none">
-                </a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto py-0">
-                        <a href="acceuil.php" class="nav-item nav-link active">acceuil</a>
-                        <a href="a propos.php" class="nav-item nav-link">a propos</a>
-                        <a 
-                        <?php if(isset($_SESSION["id"]) && !empty($_SESSION["id"])) {echo"hidden";}?>
-                        href="compte.php" class="nav-item nav-link">compte</a> 
-                        <a  href="contact.php" class="nav-item nav-link">contact</a>
-                        <?php 
-    if(!isset($_SESSION["id"]) || empty($_SESSION["id"])) { ?>
-        <a href="login.php" class="nav-item nav-link">login</a>
-<?php } else { ?>
-        <a href="logout.php" class="nav-item nav-link">logout</a>
-<?php } ?>                      <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">services</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                            <?php if(isset($_SESSION["id"]) && !empty($_SESSION["id"])) { ?>
-    <a href="services/dlogo.php" class="dropdown-item active">demande logo</a>
-    <a href="services/dflayer.php" class="dropdown-item">demande flyers</a>
-    <a href="services/dcv.php" class="dropdown-item">demande carte visite</a>
-    <a href="services/daffiche.php" class="dropdown-item">demande des affiches</a>
-    <a href="services/dpub.php" class="dropdown-item">demande publicités</a>
-<?php } else { ?>
-    <a href="logo.php" class="dropdown-item active">services logo</a>
-    <a href="flayer.php" class="dropdown-item">service flyers</a>
-    <a href="cv.php" class="dropdown-item">service carte visite</a>
-    <a href="affiche.php" class="dropdown-item">service des affiches</a>
-    <a href="pub.php" class="dropdown-item">service publicités</a>
-<?php } ?>
-                            </div>
-                        </div>
-                        
-                        </div>
-        
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
+<?php
+include "nav.php" ;
+?>
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">a propos</h1>
-              
+                <h1 class="display-2 text-uppercase text-white mb-md-4"><?= $service['title'] ?></h1>
             </div>
         </div>
     </div>
@@ -147,10 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="row g-5">
             <div class="col-lg-8">
                 <div class="mb-5">
-                    <img class="img-fluid w-100 rounded mb-5" src="img/blog-1.jpg" alt="">
-                    Notre entreprise de design graphique se spécialise dans la création de logos, de flyers, de publicités, de cartes de visite et d'affiches. Nous collaborons avec des clients de différents secteurs pour développer des designs uniques et efficaces qui reflètent leur image de marque et leur message. Nous utilisons les dernières tendances et technologies pour créer des designs de qualité professionnelle qui se démarquent de la concurrence. Nous aimons travailler en étroite collaboration avec nos clients pour comprendre leurs besoins et créer des designs qui répondent à leurs objectifs commerciaux.</p>
-                    <p>Notre équipe de designers expérimentés possède une grande expertise dans la création de designs visuels impactants qui attirent l'attention et suscitent l'intérêt. Nous nous engageons à offrir un service personnalisé et à écouter les besoins de nos clients pour garantir qu'ils sont entièrement satisfaits du résultat final. Nous nous tenons à jour des dernières tendances de design et de communication pour nous assurer que nos créations soient toujours innovantes et pertinentes. Nous croyons que le design est un élément clé pour toute entreprise qui souhaite se démarquer et réussir sur le marché.</p>
-                    <p>En somme, notre entreprise de design graphique est là pour aider les entreprises à se démarquer en créant des designs professionnels, uniques et efficaces qui reflètent leur image de marque. Nous sommes passionnés par le design et nous nous engageons à offrir un service personnalisé et à écouter les besoins de nos clients pour garantir qu'ils sont entièrement satisfaits des résultats.</p>
+                    <img class="img-fluid w-100 rounded mb-5" src="<?= $service['image'] ?>" alt="">
+                    <p>S<?= $service['description'] ?></p>    
                 </div>
                 <div class="mb-5">
                     <div class="d-flex mb-4">

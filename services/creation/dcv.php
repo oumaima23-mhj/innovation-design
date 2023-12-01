@@ -39,5 +39,5 @@ $stmt->bindParam(":notes_supplementaires", $notes_supplementaires);
 $stmt->execute();
 
 // Affichage d'un message de succès
-header("location: ../../acceuil.php");
+header("location: ../../index.php");
 ?>

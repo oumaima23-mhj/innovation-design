@@ -7,6 +7,6 @@ session_unset();
 // destroy the session
 session_destroy();
 
-header("location: /innovation-design/acceuil.php");
+header("location: /innovation-design/index.php");
 die();
 ?>

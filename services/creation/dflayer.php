@@ -38,6 +38,6 @@ $stmt->bindParam(":remarques", $remarques);
 
 $stmt->execute();
 
-header("location: ../../acceuil.php");
+header("location: ../../index.php");
 
 ?>
