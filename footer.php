@@ -18,7 +18,6 @@
                             <p class="mb-0">+21652442327</p>
                         </div>.
                         <div class="d-flex mt-4">
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
                             <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
@@ -50,7 +49,7 @@
     </div>
     <!-- Footer End -->
 
-    
+
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -62,3 +61,4 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+</div
