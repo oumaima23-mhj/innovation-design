@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Commentaire ajouté avec succès.";
         } 
         $conn->close();
-
 }}
 
 
