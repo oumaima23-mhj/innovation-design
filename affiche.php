@@ -33,12 +33,9 @@ $cat=3;
 </head>
 
 <body>
-<?php
-include "nav.php" ;
-?>
-
-
-    <!-- Hero Start -->
+   <?php
+    include "nav.php" ;
+   ?>
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
@@ -47,10 +44,6 @@ include "nav.php" ;
             </div>
         </div>
     </div>
-    <!-- Hero End -->
-
-
-    <!-- Blog Start -->
     <div class="container-fluid p-5">
         <div class="row g-5">
             <!-- Blog list Start -->
@@ -85,74 +78,13 @@ include "nav.php" ;
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="affiche/f6.jpg" alt="">
                             </div>
-                           
-                        </div>
+                        </div>   
                     </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="affiche/h4.webp" alt="">
-                            </div>
-                           
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="affiche/j5.jpg" alt="">
-                            </div>
-                           
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="affiche/kl5.jpg" alt="">
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="affiche/ml5.webp" alt="">
-                            </div>
-                          
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-6">
-                <div class="blog-item">
-                    <div class="position-relative overflow-hidden rounded-top">
-                        <img class="img-fluid" src="affiche/l5.webp" alt="">
-                    </div>
-                  
-                    <div class="col-12">
-                        <nav aria-label="Page navigation">
-                          <ul class="pagination pagination-lg justify-content-center m-0">
-                            <li class="page-item disabled">
-                              <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
-                              </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-</div>
-    </div>
+                 </div>
+             </div>
         </div>
+    </div>
+ </div>
 <?php
 include "footer.php" ;
 ?>

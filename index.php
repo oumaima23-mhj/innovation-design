@@ -1,14 +1,7 @@
 <?php
     session_start();
     include("db_connect.php");
-    if(isset($_GET['search']) && $_GET['search']) {
-        $search = $_GET['search'];
-        $sql = "SELECT * FROM services WHERE title LIKE '%" . $search . "%'";
-    } else {
-        $sql = "SELECT * FROM services";
-    }
-    $result = $conn->query($sql);
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,30 +32,6 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <style> 
-        input[type=text] {
-        width: 130px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
-        background-color: white;
-        background-image: url('searchicon.png');
-        background-position: 10px 10px; 
-        background-repeat: no-repeat;
-        padding: 12px 20px 12px 40px;
-        -webkit-transition: width 0.4s ease-in-out;
-        transition: width 0.4s ease-in-out;
-        }
-
-        input[type=text]:focus {
-        width: 100%;
-        }
-    </style>
-    <script id=alert>
-function myFunction() {
-  alert("aucun resultat!");
-}
 </script>
 </head>
 
@@ -124,7 +93,13 @@ include "nav.php" ;
                 <div class="mb-4">
                    <h1 class="display-3 text-uppercase mb-0">bienvenu a ino design</h1>
                 </div>
-                <p class="mb-4">Notre site web ropose une grande sélection de designs professionnels pour les entreprises de tous les secteurs. Nos logos,affiches , flayers, pub sont créés par des designers expérimentés et peuvent être personnalisés pour répondre aux besoins spécifiques de votre entreprise. Nous offrons également des options de tarification flexibles pour s'adapter à tous les budgets. Commandez en ligne facilement et obtenez votre nouveau logo en quelques jours seulement. Faites un pas en avant pour donner à votre entreprise une image professionnelle avec une qualité supérieure de notre site web .</p>
+                <p class="mb-4">Notre site web ropose une grande sélection de designs professionnels pour les entreprises 
+                    de tous les secteurs. Nos logos,affiches , flayers, pub sont créés par des designers expérimentés et 
+                    peuvent être personnalisés pour répondre aux besoins spécifiques de votre entreprise. 
+                    Nous offrons également des options de tarification flexibles pour s'adapter à tous les budgets.
+                     Commandez en ligne facilement et obtenez votre nouveau logo en quelques jours seulement. 
+                     Faites un pas en avant pour donner à votre entreprise une image professionnelle avec une qualité 
+                     supérieure de notre site web .</p>
                 </div>
             </div>
         </div>
@@ -134,12 +109,8 @@ include "nav.php" ;
 
     <!-- Programe Start -->
     <div class="container-fluid programe position-relative px-5 mt-5" style="margin-bottom: 135px;">
-        <form action="index.php" method="GET">
-            <input type="text" name="search" placeholder="Search"/>
-            <input type="submit" value="Search"/>
-        </form>
-        <div class="row g-5 gb-5">
-            <?php
+      <div class="row g-5 gb-5">
+        <?php
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) { ?>
                     <div class="col-lg-4 col-md-6">
@@ -156,7 +127,7 @@ include "nav.php" ;
             }
             $conn->close();
         ?>
-        </div>
+      </div>
     </div>
     <!-- Programe Start -->
     <!-- Team Start -->

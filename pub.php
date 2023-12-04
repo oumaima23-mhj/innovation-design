@@ -30,61 +30,20 @@
 </head>
 
 <body>
-<?php
-include "nav.php" ;
-?>
-
-
-    <!-- Hero Start -->
+   <?php
+   include "nav.php" ;
+   ?>
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">publicités</h1>
-                
+                <h1 class="display-2 text-uppercase text-white mb-md-4">publicités</h1>  
             </div>
         </div>
     </div>
-    <!-- Hero End -->
-
-
-    <!-- Blog Start -->
     <div class="container-fluid p-5">
         <div class="row g-5">
-            <!-- Blog list Start -->
             <div class="col-lg-8">
                 <div class="row g-5">
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="pub/p1.jpg" alt="">
-                            </div>
-                          
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="pub/p2.html" alt="">
-                            </div>
-                           
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="pub/p3.jpg" alt="">
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="pub/p45.jpg" alt="">
-                            </div>
-                           
-                        </div>
-                    </div>
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
@@ -118,50 +77,11 @@ include "nav.php" ;
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="blog-item">
-                        <div class="position-relative overflow-hidden rounded-top">
-                            <img class="img-fluid" src="pub/p65.webp" alt="">
-                        </div>
-                      
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="blog-item">
-                    <div class="position-relative overflow-hidden rounded-top">
-                        <img class="img-fluid" src="pub/p8.jpg" alt="">
-                    </div>
-                  
-                    <div class="col-12">
-                        <nav aria-label="Page navigation">
-                          <ul class="pagination pagination-lg justify-content-center m-0">
-                            <li class="page-item disabled">
-                              <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
-                              </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <!-- Blog list End -->
-    <!-- Blog End -->
-</div>
-</div>
-</div>
- <?php
-include "footer.php" ;
-?>
+        </div>
+    </div>
+  <?php
+  include "footer.php" ;
+  ?>
 </body>
 
 </html>
