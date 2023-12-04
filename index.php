@@ -1,7 +1,14 @@
 <?php
     session_start();
     include("db_connect.php");
-    ?>
+    if(isset($_GET['search']) && $_GET['search']) {
+        $search = $_GET['search'];
+        $sql = "SELECT * FROM services WHERE title LIKE '%" . $search . "%'";
+    } else {
+        $sql = "SELECT * FROM services";
+    }
+    $result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -109,8 +116,8 @@ include "nav.php" ;
 
     <!-- Programe Start -->
     <div class="container-fluid programe position-relative px-5 mt-5" style="margin-bottom: 135px;">
-      <div class="row g-5 gb-5">
-        <?php
+        <div class="row g-5 gb-5">
+            <?php
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) { ?>
                     <div class="col-lg-4 col-md-6">
@@ -127,7 +134,7 @@ include "nav.php" ;
             }
             $conn->close();
         ?>
-      </div>
+        </div>
     </div>
     <!-- Programe Start -->
     <!-- Team Start -->
