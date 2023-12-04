@@ -94,35 +94,27 @@ include "nav.php" ;
                             </div>
 
 
-                            
+
                             <?php
-if ($result->num_rows > 0) {
-    // Affichage des commentaires s'ils existent
-    while($row = $result->fetch_assoc()) {        
-        echo('<div class="d-flex mb-4">
-        <img src="img/img3.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">');
-        echo('  <div class="ps-3">
-        <h6><a href="">'.$row["nom"].'</a> <small><i>'.$row["date"].'</i></small></h6>');
-        echo('
-        <p>5/'.$row["rating"].' : '.$row["comment"].'</p>
+                        if ($result->num_rows > 0) {
+                         // Affichage des commentaires s'ils existent
+                       while($row = $result->fetch_assoc()) {        
+                       echo('<div class="d-flex mb-4">
+                       <img src="img/img3.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">');
+                        echo('  <div class="ps-3">
+                            <h6><a href="">'.$row["nom"].'</a> <small><i>'.$row["date"].'</i></small></h6>');
+                            echo('
+                            <p>5/'.$row["rating"].' : '.$row["comment"].'</p>
                             <button class="btn btn-sm btn-secondary">Repondre</button>
                         </div>
                     </div>
                     ');
-
     
-    
-    }
-} else {
-    echo "Aucun commentaire trouvé.";
-}
-?>
-
-
-
-
-
-
+                   }
+                    } else {
+                   echo "Aucun commentaire trouvé.";
+                   }
+                    ?>
                                 <div class="d-flex ms-5 mb-4">
                                     <div class="ps-3">
                                         <?php 
@@ -225,13 +217,13 @@ if ($result->num_rows > 0) {
                                                         }
                                                     }
                                                 </script>
-                                            </div>
                                     </div>
                                 </div>
                         </div>
                     </div>
                 </div>
-                <?php
+            </div>
+            <?php
     include "footer.php";
     ?>
     </body>
