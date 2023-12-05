@@ -1,4 +1,10 @@
-<?php include "nav.php";
+<?php
+session_start();
+if(empty($_SESSION["loggedIn"])) { 
+    header("location: ./login.php");
+}
+include "nav.php";
+?>
 ?>
             <div id="layoutSidenav_content">
                 <main>

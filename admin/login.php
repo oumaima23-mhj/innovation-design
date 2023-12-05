@@ -1,4 +1,37 @@
 <!DOCTYPE html>
+<?php
+// Vérifier si le formulaire a été soumis
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Vérifier si les champs email et mot de passe ne sont pas vides
+    if (!empty($_POST['inputEmail']) && !empty($_POST['inputPassword'])) {
+        // Récupérer les valeurs soumises par le formulaire
+        $email = $_POST['inputEmail'];
+        $password = $_POST['inputPassword'];
+
+        // Ici, vous pouvez ajouter la logique de validation du nom d'utilisateur et du mot de passe, par exemple, en vérifiant dans une base de données
+        // Exemple de validation basique (ne doit pas être utilisé en production)
+        $valid_email = 'admin@adm.com';
+        $valid_password = '1234';
+
+        // Vérifier si les informations soumises correspondent aux informations valides
+        if ($email === $valid_email && $password === $valid_password) {
+            // Authentification réussie - vous pouvez créer une session pour l'utilisateur
+            session_start();
+            $_SESSION['loggedIn'] = true;
+            // Rediriger l'utilisateur vers une page sécurisée par exemple
+            header("Location: index.php");
+            exit();
+        } else {
+            // Identifiants invalides
+            $errorMessage = "Identifiants invalides. Veuillez réessayer.";
+        }
+    } else {
+        // Champs manquants
+        $errorMessage = "Veuillez remplir tous les champs.";
+    }
+}
+?>
+
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -20,24 +53,28 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">adresse e-mail</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
-                                                <label for="inputPassword">mot de passe</label>
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                                <label class="form-check-label" for="inputRememberPassword">Se souvenir du mot de passe</label>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">mot de passe oublié?</a>
-                                                <a class="btn btn-primary" href="index.html">Login</a>
-                                            </div>
-                                        </form>
+                                    <form action="login.php" method="post">
+    <div class="form-floating mb-3">
+        <input class="form-control" id="inputEmail" name="inputEmail" type="email" placeholder="name@example.com" />
+        <label for="inputEmail">adresse e-mail</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input class="form-control" id="inputPassword" name="inputPassword" type="password" placeholder="Password" />
+        <label for="inputPassword">mot de passe</label>
+    </div>
+    <?php if(!empty($errorMessage)): ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $errorMessage; ?>
+        </div>
+    <?php endif; ?>
+    
+    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+        <a class="small" href="password.html">mot de passe oublié?</a>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </div>
+</form>
+</form>
+
                                     </div>
                                     <div class="card-footer text-center py-3">
                                         <div class="small"><a href="register.html">Besoin d'un compte ? Inscrivez-vous !</a></div>
