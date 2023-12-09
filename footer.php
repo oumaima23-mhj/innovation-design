@@ -16,7 +16,7 @@
                     <div class="d-flex mb-2">
                         <i class="bi bi-telephone text-primary me-2"></i>
                         <p class="mb-0">+21652442327</p>
-                    </div>.
+                    </div>
                     <div class="d-flex mt-4">
                         <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>

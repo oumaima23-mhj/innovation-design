@@ -6,19 +6,8 @@ if(!empty($_SESSION["id"])) {
 }
 $error = False;
 if ($_POST){
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "innovation_design";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT * FROM `user` where `e_mail`='" . $_POST['e-mail'] . "' and `password`='" . $_POST['pass'] . "';";
+ include "db_connect.php" ;
+    $sql = "SELECT * FROM `user` where `e_mail`='" . $_POST['e_mail'] . "' and `password`='" . $_POST['password'] . "';";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -123,11 +112,11 @@ include "nav.php" ;
             </div>
         <?php } ?>
         <div class="group-form">
-          <input type="email" name="e-mail" placeholder="e-mail">
+          <input type="email" name="e_mail" placeholder="e-mail">
           <div class="icon-mail"></div>
         </div><br>
         <div class="group-form">
-          <input type="password"  name="pass" placeholder="password">
+          <input type="password"  name="password" placeholder="password">
           <div class="icon-password"></div>
         </div><br>
         <div class="group-form">

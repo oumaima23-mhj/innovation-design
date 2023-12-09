@@ -11,7 +11,7 @@ include "nav.php";
         <div class="container-fluid px-4">
             <h1 class="mt-4">Tables Carte Visite</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="index.html">tableau de bord</a></li>
                 <li class="breadcrumb-item active">Tables</li>
             </ol>
 
@@ -84,12 +84,7 @@ include "nav.php";
     <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid px-4">
             <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
+                <div class="text-muted">innoavtion design2023</div>
             </div>
         </div>
     </footer>
@@ -102,5 +97,4 @@ include "nav.php";
     crossorigin="anonymous"></script>
 <script src="js/datatables-simple-demo.js"></script>
 </body>
-
 </html>

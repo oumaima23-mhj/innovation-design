@@ -1,40 +1,34 @@
 <?php
 session_start();
-if(!empty($_SESSION["id"])) { 
+if (!empty($_SESSION["id"])) { 
     header("location: /innovation-design/index.php");
 }
-    if ($_POST){
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "innovation_design";
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    include "db_connect.php";
 
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $numero_telephone = $_POST['numero_telephone'];
-        $email = $_POST['email'];
-        $mot_de_passe = $_POST['mot_de_passe'];
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $numero_telephone = $_POST['numero_telephone'];
+    $e_mail = $_POST['e_mail'];
+    $password = $_POST['password'];
 
-        $sql = "INSERT INTO `user`(`nom`, `prenom`, `e_mail`, `password`, `numero_telephone`) VALUES ('" . $nom . "','" . $prenom . "','" . $email . "','" . $mot_de_passe . "','" . $numero_telephone . "')";
-        
-        if ($conn->query($sql) === TRUE) {
-            header("Location: /login.php");
-            die(); 
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-        $conn->close();
+    $sql = "INSERT INTO `user`(`nom`, `prenom`, `numero_telephone`, `e_mail`, `password`) VALUES ('$nom', '$prenom', '$numero_telephone', '$e_mail', '$password')";
+    
+    if ($conn->query($sql) === TRUE) {
+        header("Location: /login.php");
+        die(); 
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
+    $conn->close();
+}
 ?>
+
 <html>
 
 <head>
-    <style>
+   <style>
     /*
     default element
 */
@@ -227,30 +221,30 @@ include "nav.php" ;
                 Veuillez remplir tous les champs
             </p>
             <form class="formulaire" method="POST" action="login.php">
-                <div class="group-form">
-                    <input type="text" placeholder="Nom" name="nom">
-                    <div class="icon-user"></div>
-                </div>
-                <div class="group-form">
-                    <input type="text" placeholder="prenom" name="prenom">
-                    <div class="icon-user"></div>
-                </div>
-                <div class="group-form">
-                    <input type="text" placeholder="numero téléphone" name="numero_telephone">
-                    <div class="icon-user"></div>
-                </div>
-                <div class="group-form">
-                    <input type="email" placeholder="e-mail" name="email">
-                    <div class="icon-mail"></div>
-                </div>
-                <div class="group-form">
-                    <input type="password" placeholder="password" name="mot_de_passe">
-                    <div class="icon-password"></div>
-                </div>
-                <div class="group-form">
-                    <input type="submit" class="inscription" value="S'inscrire">
-                </div>
-            </form>
+    <div class="group-form">
+        <input type="text" placeholder="Nom" name="nom">
+        <div class="icon-user"></div>
+    </div>
+    <div class="group-form">
+        <input type="text" placeholder="Prénom" name="prenom">
+        <div class="icon-user"></div>
+    </div>
+    <div class="group-form">
+        <input type="text" placeholder="Numéro de téléphone" name="numero_telephone">
+        <div class="icon-user"></div>
+    </div>
+    <div class="group-form">
+        <input type="email" placeholder="E-mail" name="e_mail">
+        <div class="icon-mail"></div>
+    </div>
+    <div class="group-form">
+        <input type="password" placeholder="Mot de passe" name="password">
+        <div class="icon-password"></div>
+    </div>
+    <div class="group-form">
+        <input type="submit" class="inscription" value="S'inscrire">
+    </div>
+</form>
         </div>
     </div>
 

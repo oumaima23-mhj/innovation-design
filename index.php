@@ -114,13 +114,11 @@ include "nav.php" ;
                         </div>
                     </div>
                 <?php }
-            } else {
-        
             }
-            $conn->close();
-        ?>
+            ?>
         </div>
     </div>
+   
     <!-- Programe Start -->
     <!-- Team Start -->
     <div class="container-fluid p-5">
@@ -226,10 +224,7 @@ include "nav.php" ;
         </div>
     </div>
     <!-- Testimonial End -->
-    
-        </div>
-        </div>
-<?php
+        <?php
 include "footer.php" ;
 ?>
 </body>

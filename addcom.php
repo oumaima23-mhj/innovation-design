@@ -2,6 +2,7 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     // Récupérer les données du formulaire
     $nom = $_SESSION['user']; // Supposons que vous avez un nom d'utilisateur stocké dans la session
     $date = date('Y-m-d H:i:s'); // Date système actuelle
@@ -31,7 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Exécution de la requête d'insertion
         $stmt->execute();
-
+        
+        // todo: fix this
         header("location:a-propos.php");
 
     } catch (PDOException $e) {
