@@ -19,7 +19,7 @@ if (isset($_GET['q'])) {
     if ($result->num_rows > 0) {
         // Affichage des résultats de la recherche
         while ($row = $result->fetch_assoc()) {
-            echo "Nom du service : " . $row['nom_service'] . "<br>";
+            echo "title: " . $row['title'] . "<br>";
             // Ajoutez d'autres champs que vous souhaitez afficher
         }
     } else {
@@ -96,7 +96,7 @@ $conn->close();
 <body>
     <form id="search" method="get" class="searchservice" action="services.php" data-track-onsubmit="search">
         <div class="find" >
-            <input type="text" name="q" id="searchservice" placenholder="chercher ici un service" aria-label="rechercher" value autocomplete="off" required>
+            <input type="text" name="q" id="searchservice" aria-label="rechercher" value autocomplete="off" required>
             <button type="button" class="rest" aria-label="réinitialiser"></button>
             </button>
             <div> 

@@ -1,15 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
-
 session_start();
 
-?>
+// Connexion à la base de données
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "innovation_design";
 
+try {
+    $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Vérification des données envoyées depuis le formulaire
+    if (
+        isset($_POST['nom']) &&
+        isset($_POST['email']) &&
+        isset($_POST['sujet']) &&
+        isset($_POST['message_client'])
+    ) {
+        // Récupération des données du formulaire
+        $nom = $_POST['nom'];
+        $email = $_POST['email'];
+        $sujet = $_POST['sujet'];
+        $message_client = $_POST['message_client'];
+
+        // Insertion des données dans la base de données
+        $sql = "INSERT INTO contact (nom, e_mail, sujet, message_client) VALUES (:nom, :email, :sujet, :message_client)";
+
+        try {
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":nom", $nom);
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":sujet", $sujet);
+            $stmt->bindParam(":message_client", $message_client);
+            $stmt->execute();
+
+            // Redirection après l'envoi du formulaire
+            header("Location: contact.php?status=success");
+            exit();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ino design Template</title>
+    <title>ino design </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="img/favicon.ico" rel="icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -20,15 +64,10 @@ session_start();
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-</head>
+   </head>
 
     <body>
-        <?php
-include "nav.php" ;
-?>
-
-
-            <!-- Hero Start -->
+        <?php include "nav.php" ; ?>
             <div class="container-fluid bg-primary p-5 bg-hero mb-5">
                 <div class="row py-5">
                     <div class="col-12 text-center">
@@ -37,16 +76,11 @@ include "nav.php" ;
                             <?php if(!isset($_SESSION["id"]) || empty($_SESSION["id"])) { ?>
                                 <a href="compte.php" class="btn btn-primary py-md-3 px-md-5 me-3">s'inscrire</a>
                                 <a href="compte.php" class="btn btn-light py-md-3 px-md-5">Contact</a>
-                                <?php }?>
-
-                                    <form>
+                            <?php }?>
+                        <form>
                     </div>
                 </div>
             </div>
-            <!-- Hero End -->
-
-
-            <!-- Contact Start -->
             <div class="container-fluid p-5">
                 <div class="mb-5 text-center">
                     <h5 class="text-primary text-uppercase">Contactez-nous</h5>
@@ -84,16 +118,16 @@ include "nav.php" ;
                 <div class="row g-0">
                     <div class="col-lg-6">
                         <div class="bg-dark p-5">
-                            <form>
+                            <form action="contact.php" method="post" data-status="init">
                                 <div class="row g-3">
                                     <div class="col-6">
-                                        <input type="text" class="form-control bg-light border-0 px-4" placeholder="Your Name" style="height: 55px;">
+                                        <input type="text" class="form-control bg-light border-0 px-4" placeholder="votre nom" style="height: 55px;">
                                     </div>
                                     <div class="col-6">
-                                        <input type="email" class="form-control bg-light border-0 px-4" placeholder="Your Email" style="height: 55px;">
+                                        <input type="email" class="form-control bg-light border-0 px-4" placeholder="votre adresse e-mail" style="height: 55px;">
                                     </div>
                                     <div class="col-12">
-                                        <input type="text" class="form-control bg-light border-0 px-4" placeholder="Subject" style="height: 55px;">
+                                        <input type="text" class="form-control bg-light border-0 px-4" placeholder="sujet" style="height: 55px;">
                                     </div>
                                     <div class="col-12">
                                         <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Message"></textarea>
@@ -111,12 +145,7 @@ include "nav.php" ;
                     </div>
                 </div>
             </div>
-            <!-- Contact End -->
-
-            </div>
-            <?php
-include "footer.php" ;
-?>
+            <?php include "footer.php" ;  ?>
+        </div>
     </body>
-
 </html>

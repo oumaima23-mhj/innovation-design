@@ -224,7 +224,10 @@ include "nav.php" ;
         </div>
     </div>
     <!-- Testimonial End -->
-        <?php
+    
+        </div>
+        </div>
+       <?php
 include "footer.php" ;
 ?>
 </body>

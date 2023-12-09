@@ -31,9 +31,6 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">journal d'activité</a></li>
                         <li><hr class="dropdown-divider" /></li>
-
-                        
-
                         <li><a class="dropdown-item" href="deconnexion.php">Logout</a></li>
                     </ul>
                 </li>

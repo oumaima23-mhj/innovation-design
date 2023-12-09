@@ -28,7 +28,7 @@ if(empty($_SESSION["loggedIn"])) {
                              }
                               // Requête pour récupérer les données de la table demande_affiche
                              $sql = "SELECT * FROM demande_logo";
-                             $result = $conn->query($sql);
+$result = $conn->query($sql);
 
 // Afficher les données dans le format de table HTML
 if ($result->num_rows > 0) {
