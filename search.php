@@ -23,7 +23,7 @@ if (isset($_GET['q'])) {
             // Ajoutez d'autres champs que vous souhaitez afficher
         }
     } else {
-        echo "Aucun résultat trouvé pour la recherche : " . $search_query;
+        echo "Aucun résultat trouvé : " . $search_query;
     }
   }
 // Fermeture de la connexion à la base de données
@@ -34,7 +34,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>search</title>
     <style>
         /* Style de la section du formulaire */
 .searchservice {

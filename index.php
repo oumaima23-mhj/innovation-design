@@ -6,7 +6,10 @@
         $sql = "SELECT * FROM services WHERE title LIKE '%" . $search . "%'";
     } else {
         $sql = "SELECT * FROM services";
+        
     }
+    $result = $conn->query($sql);
+    $sql = "SELECT testmonial, image, nom, prenom FROM user";
     $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -14,7 +17,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ino design Template</title>
+    <title>ino design</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="img/favicon.ico" rel="icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -200,22 +203,12 @@ include "nav.php" ;
                 </div>
                 <div class="owl-carousel testimonial-carousel">
                     <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>"J'ai travaillé avec la société innovation design de création d'affiches, logos et flyers pour développer une campagne publicitaire pour mon entreprise. Ils ont été incroyablement créatifs et professionnels dans leur approche, et ont aidé à créer des designs accrocheurs qui ont vraiment fait ressortir mon entreprise. Je recommande fortement leur travail à tous ceux qui cherchent à améliorer leur image de marque."</p>
+                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i><?= $user['testmonial'] ?></p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" alt="">
+                            <img class="img-fluid rounded-circle" src=<?= $user['image'] ?> alt="">
                             <div class="ps-4">
-                                <h5 class="text-uppercase text-light">Client Name</h5>
+                                <h5 class="text-uppercase text-light"><?= $user['nom']&& $user['prenom'] ?></h5>
                 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>"J'ai eu l'occasion de travailler avec cette société pour créer des designs pour mon entreprise. Ils ont été très réactifs à toutes mes demandes et ont créé des designs incroyablement professionnels qui ont vraiment aidé à améliorer l'image de marque de mon entreprise. Je recommande vivement cette société à tous ceux qui cherchent à améliorer leur image de marque.".</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" alt="">
-                            <div class="ps-4">
-                                <h5 class="text-uppercase text-light">Client Name</h5>
-                        
                             </div>
                         </div>
                     </div>

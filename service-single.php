@@ -130,7 +130,7 @@
             <div class="col-lg-8">
                 <div class="mb-5">
                     <img class="img-fluid w-100 rounded mb-5" src="<?= $service['image'] ?>" alt="">
-                    <p>S<?= $service['description'] ?></p>    
+                    <p><?= $service['description'] ?></p>    
                 </div>
             </div>
         </div>
