@@ -9,8 +9,6 @@
         
     }
     $result = $conn->query($sql);
-    $sql = "SELECT testmonial, image, nom, prenom FROM user";
-    $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -197,32 +195,33 @@ include "nav.php" ;
                     <img class="position-absolute w-100 h-100" src="img/testimonial.jpg">
                 </div>
             </div>
-            <div class="col-lg-6 bg-dark p-5">
-                <div class="mb-5">
-                    <h1 class="display-3 text-uppercase text-light mb-0">nos client disent</h1>
-                </div>
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) { ?>
+             <div class="col-lg-6 bg-dark p-5">
+                  <div class="mb-5"><h1 class="display-3 text-uppercase text-light mb-0">nos client disent</h1></div>
                 <div class="owl-carousel testimonial-carousel">
                     <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i><?= $user['testmonial'] ?></p>
+                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i><?= $row['testmonial'] ?></p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src=<?= $user['image'] ?> alt="">
+                            <img class="img-fluid rounded-circle" src=<?= $row['image'] ?> alt="">
                             <div class="ps-4">
-                                <h5 class="text-uppercase text-light"><?= $user['nom']&& $user['prenom'] ?></h5>
-                
+                                <h5 class="text-uppercase text-light"><?= $row['nom']&& $row['prenom'] ?></h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php }
+            }
+            ?>
         </div>
     </div>
     <!-- Testimonial End -->
     
         </div>
         </div>
-       <?php
-include "footer.php" ;
-?>
+       <?php include "footer.php" ; ?>
 </body>
 
 </html>
