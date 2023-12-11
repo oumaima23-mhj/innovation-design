@@ -97,7 +97,16 @@ $conn->close();
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
+<<<<<<< Updated upstream
                             <div class="text-muted">innovation design 2023</div>
+=======
+                        <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">innovation design</a>. 2023 All Rights Reserved.</p>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+>>>>>>> Stashed changes
                         </div>
                     </div>
                 </footer>

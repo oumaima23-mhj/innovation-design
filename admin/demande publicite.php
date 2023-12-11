@@ -13,6 +13,13 @@ include "nav.php";
                             <li class="breadcrumb-item"><a href="index.html">tableau de bord</a></li>
                         </ol>
                         <div class="card mb-4">
+<<<<<<< Updated upstream
+=======
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                DataTable 
+                            </div>
+>>>>>>> Stashed changes
                             <div class="card-body">
                             <?php
 // Connexion à la base de données - à remplacer avec vos propres informations
@@ -94,7 +101,16 @@ $conn->close();
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
+<<<<<<< Updated upstream
                             <div class="text-muted">innovation design 2023</div>
+=======
+                        <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">innovation design</a>. 2023 All Rights Reserved.</p>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+>>>>>>> Stashed changes
                         </div>
                     </div>
                 </footer>

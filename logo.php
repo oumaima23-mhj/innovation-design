@@ -36,7 +36,7 @@
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="" alt="" height="1500px" width="1600px">
+                                <img class="img-fluid" src="logo/lo.png" alt="" height="1500px" width="1600px">
                             </div>
                            
                         </div>
