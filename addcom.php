@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         
         // Redirection après l'insertion vers une page spécifique
-        header("location:a-propos.php");
+        header("location:service-single.php?service_id=".$service_id);
         exit(); // Terminer le script après la redirection
 
     } catch (PDOException $e) {
