@@ -3,14 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 03 déc. 2023 à 12:00
+-- Généré le : lun. 11 déc. 2023 à 22:57
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -54,24 +53,21 @@ CREATE TABLE `commentaire` (
   `nom` varchar(50) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
   `comment` text NOT NULL,
-  `rating` int(10) NOT NULL
+  `reponse` int(11) DEFAULT NULL,
+  `id_service` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `commentaire`
 --
 
-INSERT INTO `commentaire` (`id`, `nom`, `date`, `comment`, `rating`) VALUES
-(4, 'oumaimamahjoub', '2023-11-29', 'bonjour', 4),
-(5, 'oumaimamahjoub', '2023-11-29', '5edma tayaaraaaaaaaaaaaaaaaaaaa', 5),
-(6, 'oumaimamahjoub', '2023-11-29', 'a9ra ala roheeeeeeeeeeeeeek', 1),
-(7, '', '2023-11-29', 'oumaima rakez', 4),
-(9, '', '2023-11-29', 'super', 5),
-(12, '', '2023-12-01', 'semh', 3),
-(17, '', '2023-12-01', 'kamel akek', 4),
-(18, '', '2023-12-01', 'kamel akek', 4),
-(19, 'testtest', '2023-12-02', 'ca marche', 3),
-(20, 'testtest', '2023-12-02', 'test', 4);
+INSERT INTO `commentaire` (`id`, `nom`, `date`, `comment`, `reponse`, `id_service`) VALUES
+(1, 'testtest', '2023-12-06', 'test final', NULL, 1),
+(2, 'testtest', '2023-12-06', 'bonjour', NULL, 1),
+(3, 'testtest', '2023-12-06', 'hello ya khaled', 1, 1),
+(4, 'testtest', '2023-12-06', 'test', NULL, 0),
+(5, 'testtest', '2023-12-06', 'test session', 1, 0),
+(6, 'testtest', '2023-12-06', 'test session', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -81,10 +77,10 @@ INSERT INTO `commentaire` (`id`, `nom`, `date`, `comment`, `rating`) VALUES
 
 CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `e-mail` varchar(255) NOT NULL,
-  `subject` varchar(255) NOT NULL,
-  `message` varchar(255) NOT NULL
+  `nom` varchar(255) NOT NULL,
+  `e_mail` varchar(255) NOT NULL,
+  `sujet` varchar(255) NOT NULL,
+  `message_client` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -167,7 +163,6 @@ CREATE TABLE `demande_flyer` (
 
 INSERT INTO `demande_flyer` (`id`, `nom_evenement`, `contact_principal`, `telephone`, `email`, `objectif_flyer`, `public_cible`, `format_flyer`, `couleurs`, `texte_principal`, `date_distribution`, `budget_flyer`, `remarques`) VALUES
 (1, 'eggrg', 'rgr', 'grgr', 'test@test.com', 'efezffe', 'efzfefe', 'effeef', '', 'efefzzfefez', '2000-04-22', 'fezzeef', 'efefzfez'),
-(2, 'eggrg', 'rgr', 'grgr', 'test@test.com', 'efezffe', 'efzfefe', 'effeef', '', 'efefzzfefez', '2000-04-22', 'fezzeef', 'efefzfez'),
 (3, 'eggrg', 'rgr', 'grgr', 'test@test.com', 'efezffe', 'efzfefe', 'effeef', '', 'kckdd', '2023-06-25', 'fezzeef', 'sxsqcv');
 
 -- --------------------------------------------------------
@@ -230,12 +225,44 @@ INSERT INTO `demande_publicite` (`id`, `nom_entreprise`, `contact_principal`, `t
 -- --------------------------------------------------------
 
 --
--- Structure de la table `menu`
+-- Structure de la table `rating`
 --
 
-CREATE TABLE `menu` (
-  `image` varchar(255) NOT NULL
+CREATE TABLE `rating` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `value` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `rating`
+--
+
+INSERT INTO `rating` (`id`, `user_id`, `service_id`, `value`) VALUES
+(1, 1, 1, 4),
+(2, 1, 2, 0),
+(3, 1, 2, 3),
+(4, 1, 2, 3),
+(5, 1, 5, 5),
+(6, 1, 5, 1),
+(7, 1, 4, 4),
+(8, 1, 4, 1),
+(9, 1, 4, 1),
+(10, 1, 4, 5),
+(11, 1, 4, 5),
+(12, 1, 4, 5),
+(13, 1, 4, 3),
+(14, 1, 4, 4),
+(15, 1, 4, 2),
+(16, 1, 4, 5),
+(17, 1, 4, 5),
+(18, 1, 4, 5),
+(19, 1, 4, 5),
+(20, 1, 4, 5),
+(21, 1, 4, 5),
+(22, 1, 1, 4),
+(23, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -255,25 +282,11 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`service_id`, `title`, `description`, `image`) VALUES
-(1, 'formats multiples', 'les logos sont livrés dans différents formats pour une utilisation sur différents supports (web, imprimés, etc.)\r\n', 'img/i2.jpg'),
-(2, 'conceptions d\'affiches', 'les clients peuvent commander des affiches professionnelles\r\n', 'img/i1.png'),
-(3, 'Conception de cartes de visite', 'les clients peuvent commander des cartes de visite professionnelles utilisant leur nouveau logo\r\n', 'img/i1.png'),
-(4, 'Conception de flyers', 'les clients peuvent commander des flyers professionnels pour promouvoir leur entreprise utilisant leur nouveau logo\r\n', 'img/i1.png'),
-(5, 'conceptions des publicités ', 'les clients peuvent commander des publicités pour les réseaux sociaux ou les médias en ligne utilisant leur nouveau logo\r\n', 'img/i1.png');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `testmoniale`
---
-
-CREATE TABLE `testmoniale` (
-  `id` int(11) NOT NULL,
-  `titre` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(1, 'formats multiples', 'Les logos sont livrés dans une variété de formats adaptés à divers supports, comme le web, l\'impression et d\'autres médias. Les fichiers fournis incluent généralement des versions vectorielles pour une redimension facile sans perte de qualité, ', 'img/i2.jpg'),
+(2, 'conceptions des affiches', '\r\nUn service professionnel de création d\'affiches offre des designs personnalisés et percutants adaptés aux besoins marketing spécifiques. Les designers collaborent étroitement avec les clients pour saisir leur vision ', 'img/i1.png'),
+(3, 'Conceptions des cartes visites', '\r\nUn service professionnel de cartes de visite offre des designs uniques et personnalisés qui incarnent l\'identité d\'une entreprise, avec des options de papier, de finitions et de styles pour créer des cartes mémorables et professionnelles', 'img/i1.png'),
+(4, 'Conceptions des flyers', 'Un service de création de flyers propose des designs percutants et personnalisés pour promouvoir des événements, produits ou services, avec une variété d\'options de format, de visuels et de messages accrocheurs adaptés à chaque besoin spécifique.', 'img/i1.png'),
+(5, 'conceptions des publicités ', 'Un service publicitaire professionnel offre des stratégies de communication ciblées et des créations visuelles captivantes, adaptées à divers médias et plateformes, visant à accroître la visibilité.', 'img/i1.png');
 
 -- --------------------------------------------------------
 
@@ -289,15 +302,19 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `numero_telephone` varchar(255) NOT NULL,
   `adresse` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `status` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `nom`, `prenom`, `e_mail`, `password`, `numero_telephone`, `adresse`, `image`) VALUES
-(1, 'test', 'test', 'test@test.com', 'test', '', '', '');
+INSERT INTO `user` (`id`, `nom`, `prenom`, `e_mail`, `password`, `numero_telephone`, `adresse`, `image`, `status`) VALUES
+(1, 'test', 'test', 'test@test.com', 'test', '', '', '', '1'),
+(15, 'malek', 'chebil', 'test@test.com', 'test', '55445655', '', '', ''),
+(16, 'patati', 'patata', 'patati@yahoo.fr', '123++', '45546654', '', '', ''),
+(17, 'oumaima', 'mahjoub', 'oumaymamhj83@gmail.com', '123456', '51125770', '', '', '');
 
 --
 -- Index pour les tables déchargées
@@ -313,7 +330,8 @@ ALTER TABLE `categories`
 -- Index pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_CommentaireReply` (`reponse`);
 
 --
 -- Index pour la table `contact`
@@ -352,16 +370,18 @@ ALTER TABLE `demande_publicite`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_UserRating` (`user_id`),
+  ADD KEY `FK_ServiceRating` (`service_id`);
+
+--
 -- Index pour la table `services`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`service_id`);
-
---
--- Index pour la table `testmoniale`
---
-ALTER TABLE `testmoniale`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `user`
@@ -383,7 +403,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `contact`
@@ -422,22 +442,39 @@ ALTER TABLE `demande_publicite`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT pour la table `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
 -- AUTO_INCREMENT pour la table `services`
 --
 ALTER TABLE `services`
   MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT pour la table `testmoniale`
---
-ALTER TABLE `testmoniale`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `commentaire`
+--
+ALTER TABLE `commentaire`
+  ADD CONSTRAINT `FK_CommentaireReply` FOREIGN KEY (`reponse`) REFERENCES `commentaire` (`id`);
+
+--
+-- Contraintes pour la table `rating`
+--
+ALTER TABLE `rating`
+  ADD CONSTRAINT `FK_ServiceRating` FOREIGN KEY (`service_id`) REFERENCES `services` (`service_id`),
+  ADD CONSTRAINT `FK_UserRating` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

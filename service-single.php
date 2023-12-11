@@ -93,7 +93,6 @@
         .two {
             color: rgb(255, 106, 0);
         }
-
         .three {
             color: rgb(251, 255, 120);
         }
