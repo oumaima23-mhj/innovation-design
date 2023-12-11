@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($email === $valid_email && $password === $valid_password) {
             // Authentification réussie - vous pouvez créer une session pour l'utilisateur
             session_start();
-            $_SESSION['loggedIn'] = true;
+            $_SESSION['admin'] = true;
             // Rediriger l'utilisateur vers une page sécurisée par exemple
             header("Location: index.php");
             exit();

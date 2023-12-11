@@ -1,28 +1,35 @@
 <?php
 // Start the session
 session_start();
-if(!empty($_SESSION["id"])) { 
+if (!empty($_SESSION["id"])) {
     header("location: /innovation-design/index.php");
 }
-$error = False;
-if ($_POST){
- include "db_connect.php" ;
-    $sql = "SELECT * FROM `user` where `e_mail`='" . $_POST['e_mail'] . "' and `password`='" . $_POST['password'] . "';";
+
+$error = false;
+if ($_POST) {
+    include "db_connect.php";
+    $sql = "SELECT * FROM `user` WHERE `e_mail`='" . $_POST['e_mail'] . "' AND `password`='" . $_POST['password'] . "';";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        // Set session variables
-        $_SESSION["id"] = true;
-        $_SESSION["user"]=$row["prenom"].$row["nom"];
-        header("location: /innovation-design/index.php");
-        die();
+
+        // Check if the account is blocked
+        if ($row['status'] == 0) {
+            $error = true; // Account is blocked
+        } else {
+            // Set session variables
+            $_SESSION["id"] = true;
+            $_SESSION["user"] = $row["prenom"] . $row["nom"];
+            header("location: /innovation-design/index.php");
+            die();
+        }
     } else {
-        $error = True;
+        $error = true; // Incorrect login
     }
+
     $conn->close();
 }
-
 ?>
 
 <style>
@@ -105,25 +112,35 @@ form br {
 include "nav.php" ;
 ?>
 <br>
-      <form action="login.php" method="POST" class="formulaire">
-        <?php if ($error) { ?>
-            <div class="alert alert-danger" role="alert">
-              login incorrect
-            </div>
-        <?php } ?>
-        <div class="group-form">
-          <input type="email" name="e_mail" placeholder="e-mail">
-          <div class="icon-mail"></div>
-        </div><br>
-        <div class="group-form">
-          <input type="password"  name="password" placeholder="password">
-          <div class="icon-password"></div>
-        </div><br>
-        <div class="group-form">
-          <input type="submit" class="inscription" value="login">
-          <a href="compte.php"><input type="button" class="inscription" value="inscription"></a>
+<form action="login.php" method="POST" class="formulaire">
+    <?php if ($error) { ?>
+        <div class="alert alert-danger" role="alert">
+            <?php
+            if (isset($row) && $row['status'] == 0) {
+                echo "Votre compte est bloqué. Veuillez contacter l'administrateur.";
+            } else if (isset($row)) {
+              echo "Login incorrect.";
+            }
+            {
+              echo "Aucun compte trouvé pour ces identifiants. Veuillez vérifier vos informations de connexion.";
+            }
+            ?>
         </div>
-      </form>
+    <?php } ?>
+    <div class="group-form">
+        <input type="email" name="e_mail" placeholder="e-mail">
+        <div class="icon-mail"></div>
+    </div><br>
+    <div class="group-form">
+        <input type="password"  name="password" placeholder="password">
+        <div class="icon-password"></div>
+    </div><br>
+    <div class="group-form">
+        <input type="submit" class="inscription" value="login">
+        <a href="compte.php"><input type="button" class="inscription" value="inscription"></a>
+    </div>
+</form>
+
 
      </div>
   </div>

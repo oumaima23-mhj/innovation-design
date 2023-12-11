@@ -232,6 +232,9 @@ include "nav.php" ;
     <?php if(isset($_SESSION['erreurs']) && in_array("Le champ E-mail est vide.", $_SESSION['erreurs'])) {
             echo "<div class='error'>Le champ E-mail est vide.</div>";
         } ?>
+            <?php if(isset($_SESSION['erreurs']) && in_array("L'adresse e-mail n'est pas valide.", $_SESSION['erreurs'])) {
+            echo "<div class='error'>L'adresse e-mail n'est pas valide.</div>";
+        } ?>
     <div class="group-form">
 
         <input type="email" value="<?php if(isset($_GET['email'])) { echo $_GET['email']; } ?>" placeholder="E-mail" name="e_mail">
