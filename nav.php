@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!-- Header Start -->
 <div class="container-fluid bg-dark px-0">
     <div class="row gx-0">

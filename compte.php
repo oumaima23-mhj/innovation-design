@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!empty($_SESSION["id"])) { 
     header("location: /innovation-design/index.php");
     exit; // Terminer l'exécution du script après la redirection

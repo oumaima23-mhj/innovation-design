@@ -1,108 +1,54 @@
 <?php
-   $servername = "localhost";
-   $username = "root";
-   $password = "";
-   $dbname = "innovation_design";
-   $conn = mysqli_connect($servername, $username, $password, $dbname);
-   if (!$conn) {
-       die("Connexion échouée : " . mysqli_connect_error());
-   }
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "innovation_design";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Connexion échouée : " . mysqli_connect_error());
+}
+
 if (isset($_GET['q'])) {
     $search_query = $_GET['q'];
 
-    // Exemple de requête SQL pour rechercher dans une table "services"
-    $sql = "SELECT * FROM services WHERE services LIKE '%$search_query%'";
+    // Utilisation de requêtes préparées pour la sécurité
+    $sql = "SELECT * FROM services WHERE title LIKE ? OR description LIKE ?";
+    
+    // Préparation de la requête
+    $stmt = mysqli_prepare($conn, $sql);
 
-    // Exécution de la requête
-    $result = $conn->query($sql);
+    // Vérification de la préparation de la requête
+    if ($stmt) {
+        // Ajout du caractère joker (%) pour la recherche
+        $param = "%" . $search_query . "%";
 
-    if ($result->num_rows > 0) {
-        // Affichage des résultats de la recherche
-        while ($row = $result->fetch_assoc()) {
-            echo "title: " . $row['title'] . "<br>";
-            // Ajoutez d'autres champs que vous souhaitez afficher
+        // Liaison des paramètres avec la requête
+        mysqli_stmt_bind_param($stmt, "ss", $param, $param);
+
+        // Exécution de la requête préparée
+        mysqli_stmt_execute($stmt);
+
+        // Récupération des résultats
+        $result = mysqli_stmt_get_result($stmt);
+
+        if (mysqli_num_rows($result) > 0) {
+            // Affichage des résultats de la recherche
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "Title: " . $row['title'] . "<br>";
+                // Ajoutez d'autres champs que vous souhaitez afficher
+            }
+        } else {
+            echo "Aucun résultat trouvé pour : " . $search_query;
         }
+
+        // Fermeture de la requête préparée
+        mysqli_stmt_close($stmt);
     } else {
-        echo "Aucun résultat trouvé : " . $search_query;
+        echo "Erreur dans la préparation de la requête : " . mysqli_error($conn);
     }
-  }
+}
+
 // Fermeture de la connexion à la base de données
-$conn->close();
+mysqli_close($conn);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>search</title>
-    <style>
-        /* Style de la section du formulaire */
-.searchservice {
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-/* Style de la zone de recherche */
-.find {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* Style de l'icône dans la zone de recherche */
-.ic {
-  fill: #888; /* Couleur de l'icône */
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-}
-
-/* Style du champ de recherche */
-#searchservice {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-}
-
-/* Style du bouton de réinitialisation */
-.rest {
-  background: none;
-  border: none;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-}
-
-/* Style du bouton de recherche */
-.btn_prim_md-mls-fsh0 {
-  padding: 8px 16px;
-  background-color: #007bff; /* Couleur de fond du bouton */
-  color: #fff; /* Couleur du texte */
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-/* Style du bouton de recherche au survol */
-.btn_prim_md-mls-fsh0:hover {
-  background-color: #0056b3; /* Couleur de fond du bouton au survol */
-}
-
-    </style>
-</head>
-<body>
-    <form id="search" method="get" class="searchservice" action="services.php" data-track-onsubmit="search">
-        <div class="find" >
-            <input type="text" name="q" id="searchservice" aria-label="rechercher" value autocomplete="off" required>
-            <button type="button" class="rest" aria-label="réinitialiser"></button>
-            </button>
-            <div> 
-             <button class="btn_prim_md-mls-fsh0">rechercher
-            </button>
-        </div>
-    </form>
-</body>
-</html>

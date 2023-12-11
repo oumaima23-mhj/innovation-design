@@ -17,7 +17,8 @@
 </head>
 
 <body>
-    <?php include "nav.php" ; ?>
+    <?php include "nav.php" ; 
+    ?>
     <div class="container-fluid p-5">
         <div class="row g-5">
             <div class="col-lg-8">
