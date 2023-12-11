@@ -16,7 +16,7 @@
         }
 
         // Récupération des commentaires avec leurs réponses
-        $sql = "SELECT * FROM `commentaire` where reponse is null;";
+        $sql = "SELECT * FROM `commentaire` where reponse is null and id_service=".$service_id."	;";
         $result = $conn->query($sql);
         $comments = array();
         while ($row = $result->fetch_assoc()) {
@@ -25,7 +25,7 @@
             $comment['reponse'] = array();
             
             // Ajout des réponses associées au commentaire
-            $sqlReply = "SELECT * FROM `commentaire` where reponse = " . $commentId . ";";
+            $sqlReply = "SELECT * FROM `commentaire` where reponse = " . $commentId ." and id_service=".$service_id.";";
             $resultReply = $conn->query($sqlReply);
             
             $replys = array();
@@ -154,7 +154,8 @@ rating($service_id);
                                     onclick="replyToComment(<?= $comment['id'] ?>)">Répondre</button>
                                 <form id="replyForm<?= $comment["id"] ?>" method="POST" action="addrep.php"
                                     class="replyForm my-3" style="display: none;">
-                                    <input type="text" name="id_com" hidden value="<?php echo ($comment["id"]); ?>">
+                                    <input type="text" name="service_id" hidden value="<?php echo ($service_id); ?>">
+                                    <input type="text" name="com_id" hidden value="<?php echo ($comment["id"]); ?>">
                                     <input type="text" name="nom" hidden value="<?php echo ( $comment["nom"]); ?>">
                                     <textarea name="comment" class="form-control bg-light border-0 px-4 py-3" cols="100"
                                         rows="2" placeholder="Message"></textarea>
@@ -200,6 +201,8 @@ rating($service_id);
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <div>
+                                        <input type="text" name="service_id" hidden value="<?php echo ($service_id); ?>">
+
                                             <textarea name="comment" class="form-control bg-light border-0 px-4 py-3"
                                                 cols="100" rows="4" placeholder="Message"></textarea>
                                             <button class="btn btn-primary py-3" type="submit">Comment</button>

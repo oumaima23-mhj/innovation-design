@@ -1,10 +1,10 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
-    $id_com = $_POST['id_com']; // L'identifiant du commentaire auquel vous répondez
+    $service_id = $_POST['service_id']; // L'identifiant du commentaire auquel vous répondez
     $nom = $_POST['nom']; // Nom de l'utilisateur (à adapter selon votre logique)
     $commentaire = $_POST['comment']; // Contenu de la réponse
-
+    $com_id=$_POST["com_id"];
     // Date système actuelle
     $date = date('Y-m-d H:i:s');
 
@@ -20,19 +20,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Requête d'insertion pour ajouter une nouvelle réponse à la table 'reply'
-        $sql = "INSERT INTO reply (id_com, nom, date, commentaire) VALUES (:id_com, :nom, :date, :commentaire)";
+        $sql = "INSERT INTO commentaire (id_service, nom, date, comment, reponse) VALUES (:id_service, :nom, :date, :commentaire, :reponse)";
         $stmt = $conn->prepare($sql);
-
+        
         // Liaison des paramètres
-        $stmt->bindParam(':id_com', $id_com);
+        $stmt->bindParam(':id_service', $service_id);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':date', $date);
         $stmt->bindParam(':commentaire', $commentaire);
+        $stmt->bindParam(':reponse', $com_id);
 
+        
         // Exécution de la requête d'insertion
         $stmt->execute();
-
-        header("location:a-propos.php");
+        
+        header("location:service-single.php?service_id=".$service_id);
 
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
