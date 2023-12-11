@@ -67,7 +67,7 @@
                                 <a href="logout.php" class="nav-item nav-link">logout</a>
                                 <?php } ?>
                     </div>
-                    <?php //include "search.php" ; ?>
+                    <?php include "search.php" ; ?>
                 </div>
             </nav>
         </div>

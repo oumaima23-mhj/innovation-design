@@ -38,7 +38,7 @@ $conn->close();
     <style>
         /* Style de la section du formulaire */
 .searchservice {
-  margin: 20px;
+  margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
