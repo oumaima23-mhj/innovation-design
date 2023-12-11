@@ -173,8 +173,10 @@ function deblockUser(userId) {
                             echo '<td><button class="btn btn-success" onclick="deblockUser(' . $row["id"] . ')">Débloquer</button></td>';
                         } else {
                             // Si le compte est actif, afficher le bouton de blocage avec les classes Bootstrap
-                            echo '<td><button class="btn btn-danger" onclick="blockUser(' . $row["id"] . ')">Bloquer</button></td>';
+                            echo '<td><button class="btn btn-danger" onclick="blockUser(' . $row["id"] . ')">Bloquer</button>';
                         }
+                        echo '<button class="btn btn-danger" onclick="deleteUser(' . $row["id"] . ')">Supprimer</button></td>';
+
                         
                      echo '</tr>';
 
@@ -193,19 +195,26 @@ function deblockUser(userId) {
                 ?>
             </div>
         </main>
+        <script>
+    function deleteUser(userId) {
+        // Demander une confirmation avant la suppression
+        if (confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
+            // Redirection vers la page de suppression avec l'identifiant de l'utilisateur
+            window.location.href = 'delete_user.php?id=' + userId;
+        }
+    }
+</script>
+
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-<<<<<<< Updated upstream
                             <div class="text-muted">innovation design 2023</div>
-=======
                         <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">innovation design</a>. 2023 All Rights Reserved.</p>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
                                 <a href="#">Terms &amp; Conditions</a>
                             </div>
->>>>>>> Stashed changes
                         </div>
                     </div>
                 </footer>
