@@ -5,15 +5,9 @@ if (!empty($_SESSION["id"])) {
 }
 
 ?>
-
-
 <html>
-
 <head>
-   <style>
-    /*
-    default element
-*/
+    <style>
     body {
         margin: 0;
         padding: 0;
@@ -203,65 +197,58 @@ include "nav.php" ;
                 Veuillez remplir tous les champs
             </p>
             <form class="formulaire" method="POST" action="insertUser.php">
-            <?php if(isset($_SESSION['erreurs']) && in_array("Le champ Nom est vide.", $_SESSION['erreurs'])) {
+                <?php if(isset($_SESSION['erreurs']) && in_array("Le champ Nom est vide.", $_SESSION['erreurs'])) {
             echo "<div class='error'>Le champ Nom est vide.</div>";
-        } ?>
-    <div class="group-form">
-
-        <input type="text" placeholder="Nom" name="nom" value="<?php if(isset($_GET['nom'])) { echo $_GET['nom']; } ?>">
-        <div class="icon-user"></div>
-    </div>
-    
-    <?php if(isset($_SESSION['erreurs']) && in_array("Le champ Prénom est vide.", $_SESSION['erreurs'])) {
+            } ?>
+                <div class="group-form">
+                    <input type="text" placeholder="Nom" name="nom"
+                        value="<?php if(isset($_GET['nom'])) { echo $_GET['nom']; } ?>">
+                    <div class="icon-user"></div>
+                </div>
+                <?php if(isset($_SESSION['erreurs']) && in_array("Le champ Prénom est vide.", $_SESSION['erreurs'])) {
             echo "<div class='error'>Le champ Prénom est vide.</div>";
         } ?>
-    <div class="group-form">
-
-        <input type="text" placeholder="Prénom" value='<?php if(isset($_GET['prenom'])) { echo $_GET['prenom']; } ?>' name="prenom">
-        <div class="icon-user"></div>
-    </div>
-    <?php if(isset($_SESSION['erreurs']) && in_array("Le champ Numéro de téléphone est vide.", $_SESSION['erreurs'])) {
+                <div class="group-form">
+                    <input type="text" placeholder="Prénom"
+                        value='<?php if(isset($_GET['prenom'])) { echo $_GET['prenom']; } ?>' name="prenom">
+                    <div class="icon-user"></div>
+                </div>
+                <?php if(isset($_SESSION['erreurs']) && in_array("Le champ Numéro de téléphone est vide.", $_SESSION['erreurs'])) {
             echo "<div class='error'>Le champ Numéro de téléphone est vide.</div>";
         } ?>
-    <div class="group-form">
-
-        <input type="text" value='<?php if(isset($_GET['tel'])) { echo $_GET['tel']; } ?>' placeholder="Numéro de téléphone" name="numero_telephone">
-        <div class="icon-user"></div>
-    </div>
-    <?php if(isset($_SESSION['erreurs']) && in_array("Le champ E-mail est vide.", $_SESSION['erreurs'])) {
+                <div class="group-form">
+                    <input type="text" value='<?php if(isset($_GET['tel'])) { echo $_GET['tel']; } ?>'
+                        placeholder="Numéro de téléphone" name="numero_telephone">
+                    <div class="icon-user"></div>
+                </div>
+                <?php if(isset($_SESSION['erreurs']) && in_array("Le champ E-mail est vide.", $_SESSION['erreurs'])) {
             echo "<div class='error'>Le champ E-mail est vide.</div>";
         } ?>
-            <?php if(isset($_SESSION['erreurs']) && in_array("L'adresse e-mail n'est pas valide.", $_SESSION['erreurs'])) {
+                <?php if(isset($_SESSION['erreurs']) && in_array("L'adresse e-mail n'est pas valide.", $_SESSION['erreurs'])) {
             echo "<div class='error'>L'adresse e-mail n'est pas valide.</div>";
         } ?>
-    <div class="group-form">
-
-        <input type="email" value="<?php if(isset($_GET['email'])) { echo $_GET['email']; } ?>" placeholder="E-mail" name="e_mail">
-        <div class="icon-mail"></div>
-    </div>
-    <?php if(isset($_SESSION['erreurs']) && in_array("Le champ Mot de passe est vide.", $_SESSION['erreurs'])) {
+                <div class="group-form">
+                    <input type="email" value="<?php if(isset($_GET['email'])) { echo $_GET['email']; } ?>"
+                        placeholder="E-mail" name="e_mail">
+                    <div class="icon-mail"></div>
+                </div>
+                <?php if(isset($_SESSION['erreurs']) && in_array("Le champ Mot de passe est vide.", $_SESSION['erreurs'])) {
             echo "<div class='error'>Le champ Mot de passe est vide.</div>";
-        } ?>
-    <div class="group-form">
-
-        <input type="password"  placeholder="Mot de passe" name="password">
-        <div class="icon-password"></div>
-        
-    </div>
-    <div class="group-form">
-        <input type="submit" class="inscription" value="S'inscrire">
-    </div>
-</form>
-
-
-
+    } ?>
+                <div class="group-form">
+                    <input type="password" placeholder="Mot de passe" name="password">
+                    <div class="icon-password"></div>
+                </div>
+                <div class="group-form">
+                    <input type="submit" class="inscription" value="S'inscrire">
+                </div>
+            </form>
         </div>
     </div>
 
-    <?php
-include "footer.php" ;
-$erreurs = isset($_SESSION['erreurs']) ? $_SESSION['erreurs'] : array();
-unset($_SESSION['erreurs']);
-?>
+    <?php include "footer.php" ;
+    $erreurs = isset($_SESSION['erreurs']) ? $_SESSION['erreurs'] : array();
+   unset($_SESSION['erreurs']);
+    ?>
 
 </html>

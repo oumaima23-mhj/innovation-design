@@ -36,7 +36,6 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="pub/p5.jpg" alt="">
                             </div>
-                           
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -44,15 +43,13 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="pub/p52.jpg" alt="">
                             </div>
-                           
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="pub/p77.jpg" alt="">
-                            </div>
-                            
+                            </div> 
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -60,16 +57,13 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="pub/p45969.jpg" alt="">
                             </div>
-                          
                         </div>
                     </div>
-              </div>
+                </div>
             </div>
         </div>
     </div>
-  <?php
-  include "footer.php" ;
-  ?>
+  <?php  include "footer.php" ; ?>
 </body>
 
 </html>

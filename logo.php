@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ino design Template</title>
+    <title>ino design </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="img/favicon.ico" rel="icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,15 +17,11 @@
 </head>
 
 <body>
-   <?php
-   include "nav.php" ;
-   ?>
-
+   <?php include "nav.php" ; ?>
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
                 <h1 class="display-2 text-uppercase text-white mb-md-4">les logo</h1>
-                
             </div>
         </div>
     </div>
@@ -38,7 +34,6 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="logo/lo.png" alt="" height="1500px" width="1600px">
                             </div>
-                           
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -46,15 +41,13 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="" alt="" height="1500px" width="1600px">
                             </div>
-                           
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="blog-item">
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="" alt="" height="1500px" width="1600px">
-                            </div>
-                           
+                            </div>     
                         </div>
                     </div>
                     <div class="col-md-6">

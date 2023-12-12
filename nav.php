@@ -60,7 +60,7 @@ session_start();
                                         <a href="cv.php" class="dropdown-item">service carte visite</a>
                                         <a href="affiche.php" class="dropdown-item">service des affiches</a>
                                         <a href="pub.php" class="dropdown-item">service publicités</a>
-                                        <?php } ?>
+                                    <?php } ?>
                             </div>
                         </div>
                         <a href="contact.php" class="nav-item nav-link">contact</a>
@@ -69,7 +69,7 @@ session_start();
                             <a href="compte.php" class="nav-item nav-link">compte</a>
                             <?php } else { ?>
                                 <a href="logout.php" class="nav-item nav-link">logout</a>
-                                <?php } ?>
+                            <?php } ?>
                     </div>
                     <?php include "search.php" ; ?>
                 </div>

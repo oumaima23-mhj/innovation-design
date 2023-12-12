@@ -16,15 +16,11 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-  <?php
-  include "nav.php" ;
-  ?>
-
+  <?php   include "nav.php" ; ?>
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
                 <h1 class="display-2 text-uppercase text-white mb-md-4">flayers</h1>
-                
             </div>
         </div>
     </div>
@@ -37,7 +33,6 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="flayers/f56.webp" alt="" height="1500px" width="1600px">
                             </div>
-                           
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -45,7 +40,6 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="flayers/f3.webp" alt="" height="1500px" width="1600px">
                             </div>
-                           
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -53,7 +47,6 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="flayers/f33.webp" alt="" height="1500px" width="1600px">
                             </div>
-                           
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -61,7 +54,6 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="flayers/f55.webp" alt="" height="1500px" width="1600px">
                             </div>
-                            
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -69,17 +61,13 @@
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid" src="flayers/f56.webp" alt="" height="1500px" width="1600px">
                             </div>
-                          
                         </div>
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
     </div>
 </div>
-<?php
-include "footer.php" ;
-?>
+<?php include "footer.php" ;?>
 </body>
-
 </html>

@@ -3,9 +3,6 @@ session_start();
 if(empty($_SESSION["admin"])) { 
     header("location: ./login.php");
 }
-
-
-
 include "nav.php";
 // Connexion à la base de données - à remplacer avec vos propres informations
   $servername = "localhost";
@@ -77,10 +74,6 @@ function deblockUser(userId) {
         }
     });
 }
-
-
-
-
 </script>
             <div id="layoutSidenav_content">
                 <main>
@@ -176,11 +169,7 @@ function deblockUser(userId) {
                             echo '<td><button class="btn btn-danger" onclick="blockUser(' . $row["id"] . ')">Bloquer</button>';
                         }
                         echo '<button class="btn btn-danger" onclick="deleteUser(' . $row["id"] . ')">Supprimer</button></td>';
-
-                        
                      echo '</tr>';
-
-
                 } 
                 echo '</tbody>';
                 echo '</table>';
@@ -188,9 +177,7 @@ function deblockUser(userId) {
                 else {
                     echo "0 results";
                 }
-            
-
-                // Fermer la connexion à la base de données
+              // Fermer la connexion à la base de données
                 $conn->close();
                 ?>
             </div>
@@ -208,13 +195,7 @@ function deblockUser(userId) {
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">innovation design 2023</div>
-                        <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">innovation design</a>. 2023 All Rights Reserved.</p>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
+                        <p class="text-secondary mb-0">innovation design</a>. 2023 All Rights Reserved.</p>
                         </div>
                     </div>
                 </footer>

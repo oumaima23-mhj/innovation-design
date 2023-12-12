@@ -1,6 +1,4 @@
 <?php
-    session_start();
-    
     if(isset($_GET) && $_GET && $_GET['service_id']){
         include_once ("db_connect.php");
 
@@ -114,9 +112,7 @@
     </style>
 </head>
 <body>
-   <?php
-   include "nav.php" ;
-   ?>
+   <?php include "nav.php" ; ?>
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
@@ -201,9 +197,8 @@ rating($service_id);
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <div>
-                                        <input type="text" name="service_id" hidden value="<?php echo ($service_id); ?>">
-
-                                            <textarea name="comment" class="form-control bg-light border-0 px-4 py-3"
+                                          <input type="text" name="service_id" hidden value="<?php echo ($service_id); ?>">
+                                                <textarea name="comment" class="form-control bg-light border-0 px-4 py-3"
                                                 cols="100" rows="4" placeholder="Message"></textarea>
                                             <button class="btn btn-primary py-3" type="submit">Comment</button>
                                         </div>

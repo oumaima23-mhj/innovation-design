@@ -104,12 +104,12 @@ include "nav.php";
         </div>
     </main>
     <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted"> innovation design 2023</div>
-        
-        </div>
-    </footer>
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                        <p class="text-secondary mb-0">innovation design</a>. 2023 All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </footer>
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">

@@ -113,7 +113,7 @@ if ($total_ratings > 0) {
 
 ?>
 
-<span class="heading">User Rating</span>
+<span class="heading">Évaluation </span>
 <?php
 // Output star icons based on average rating
 for ($i = 1; $i <= 5; $i++) {
@@ -124,7 +124,7 @@ for ($i = 1; $i <= 5; $i++) {
     }
 }
 ?>
-<p><?php echo number_format($average_rating, 1); ?> average based on <?php echo $total_ratings; ?> reviews.</p>
+<p><?php echo number_format($average_rating, 1); ?> Moyenne basée sur <?php echo $total_ratings; ?> avis</p>
 <hr style="border:3px solid #f1f1f1">
 
 <div class="row">
